@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +11,7 @@
     <!-- Favicon icon -->
 
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('org/assets/')}}/images/favicon.png">
-    <title>Material Pro Admin Template - The Most Complete & Trusted Bootstrap 4 Admin Template</title>
+    <title>黎明之光</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('org/assets/')}}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -27,6 +26,18 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="{{asset('org/assets/')}}/plugins/jquery/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        })
+    </script>
+    @stack('css')
 </head>
 
 <body class="fix-header card-no-border">
@@ -35,7 +46,8 @@
 <!-- ============================================================== -->
 <div class="preloader">
     <svg class="circular" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+    </svg>
 </div>
 <!-- ============================================================== -->
 <!-- Main wrapper - style you can find in pages.scss -->
@@ -44,15 +56,15 @@
     <!-- ============================================================== -->
     <!-- Topbar header - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    @include('admin.layouts.head')
-    <!-- ============================================================== -->
+@include('admin.layouts.head')
+<!-- ============================================================== -->
     <!-- End Topbar header -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
-    @include('admin.layouts.slide')
-    <!-- ============================================================== -->
+@include('admin.layouts.slide')
+<!-- ============================================================== -->
     <!-- End Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
@@ -66,36 +78,16 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="row page-titles">
-                <div class="col-md-5 col-8 align-self-center">
-                    <h3 class="text-themecolor m-b-0 m-t-0">Email App</h3>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Email App</li>
-                    </ol>
-                </div>
-                <div class="col-md-7 col-4 align-self-center">
-                    <div class="d-flex m-t-10 justify-content-end">
-                        <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-                            <div class="chart-text m-r-10">
-                                <h6 class="m-b-0"><small>THIS MONTH</small></h6>
-                                <h4 class="m-t-0 text-info">$58,356</h4></div>
-                            <div class="spark-chart">
-                                <div id="monthchart"></div>
-                            </div>
-                        </div>
-                        <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-                            <div class="chart-text m-r-10">
-                                <h6 class="m-b-0"><small>LAST MONTH</small></h6>
-                                <h4 class="m-t-0 text-primary">$48,356</h4></div>
-                            <div class="spark-chart">
-                                <div id="lastmonthchart"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
+        {{--<div class="row page-titles">--}}
+        {{--<div class="col-md-5 col-8 align-self-center">--}}
+        {{--<ol class="breadcrumb">--}}
+        {{--<li class="breadcrumb-item"><a href="{{route('admin.index')}}">首页</a></li>--}}
+        {{--<li class="breadcrumb-item active">欢迎页面</li>--}}
+        {{--</ol>--}}
+        {{--</div>--}}
+
+        {{--</div>--}}
+        <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
@@ -115,7 +107,7 @@
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-        <footer class="footer"> © 2017 Material Pro Admin by wrappixel.com </footer>
+        <footer class="footer"> © 2017 Material Pro Admin by wrappixel.com</footer>
         <!-- ============================================================== -->
         <!-- End footer -->
         <!-- ============================================================== -->
@@ -142,6 +134,7 @@
 <script src="{{asset('org/assets/')}}/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 <!-- ============================================================== -->
 @include('layouts.message')
+@stack('js')
 </body>
 
 </html>

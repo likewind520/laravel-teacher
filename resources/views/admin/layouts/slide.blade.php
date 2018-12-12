@@ -6,26 +6,20 @@
             <!-- User profile image -->
             <div class="profile-img"> <img src="{{asset('org/assets/')}}/images/users/profile.png"  alt="user" /> </div>
             <!-- User profile text-->
-            <div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Markarn Doe</a>
-                <div class="dropdown-menu animated flipInY">
-                    <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
-                    <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
-                    <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-                    <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-                    <div class="dropdown-divider"></div> <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
-                </div>
+            <div class="profile-text"> <a href="#">{{auth('admin')->user()->username}}</a>
+
             </div>
         </div>
         <!-- End User profile text-->
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li class="nav-small-cap">后台管理</li>
+                <li class="nav-small-cap " style="font-size: 16px">后台管理</li>
                 <li class="active">
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="true"><i class="mdi mdi-gauge"></i><span class="hide-menu">商城系统 </span></a>
                     <ul aria-expanded="true" class="collapse">
-                        <li><a href="index.html">栏目管理</a></li>
-                        <li><a href="index.html">商品管理</a></li>
+                        <li><a href="{{route('admin.category.index')}}">栏目管理</a></li>
+                        <li><a href="{{route('admin.good.index')}}">商品管理</a></li>
                     </ul>
                 </li>
 

@@ -1,9 +1,9 @@
 <?php
 
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 //后台不需要登录拦截
 Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
     //登录页面
@@ -16,5 +16,14 @@ Route::group(['middleware' => ['admin.auth'],'prefix' => 'admin', 'namespace' =>
     Route::get('/logout', 'LoginController@logout')->name('logout');
     //后台欢迎页面
     Route::get('/', 'IndexController@index')->name('index');
+    //栏目管理
+    Route::resource('category','CategoryController');
+    //商品管理
+    Route::resource('good','GoodController');
 });
+//工具类
+Route::group( ['prefix' => 'util' , 'namespace' => 'Util' , 'as' => 'util.'] , function () {
+    //上传
+    Route::any( '/upload' , 'UploadController@upload' )->name( 'upload' );
+} );
 
