@@ -38,7 +38,7 @@ class UploadController extends Controller
     //验证上传大小
     private function checkSize($file){
         //$file->getSize()获取上传文件大小
-        if($file->getSize() > 20){
+        if($file->getSize() > 20000000){
             //return  ['message' =>'上传文件过大', 'code' => 403];
             //使用异常类处理上传异常
             //创建异常类:exception

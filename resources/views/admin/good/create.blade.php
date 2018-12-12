@@ -185,7 +185,7 @@
                 , acceptMime: 'image/jpg, image/png'
                 , size: 50000000000 //最大允许上传的文件大小，单位 KB。不支持ie8/9
                 , exts: 'jpg|png'
-                //,drag:true //是否接受拖拽的文件上传，设置 false 可禁用。不支持ie8/9
+                 // ,drag:true //是否接受拖拽的文件上传，默认为ture设置 false 可禁用。不支持ie8/9
                 //上传成功之后的回调
                 , done: function (res) {
                     //console.log(res)
