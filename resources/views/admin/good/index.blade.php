@@ -69,7 +69,7 @@
                                             {{--{{implode(',',$good->spec->pluck('total')->toArray())}}--}}
                                         {{--</td>--}}
                                         <td>{{$good->category['name']}}</td>
-                                        <td>{{$good['created_at']}}</td>
+                                        <td>{{$good['created_at']->format('Y/m/d')}}</td>
                                         <td>
                                             <a href="{{route('admin.good.edit',$good)}}">
                                                 <i class="fa fa-pencil text-inverse m-r-10"></i> </a>

@@ -50,4 +50,5 @@ class UploadController extends Controller
             throw new UploadException('类型不允许');
         }
     }
+
 }

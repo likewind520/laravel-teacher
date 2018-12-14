@@ -47,7 +47,7 @@
                                            placeholder="如:image/jpg, image/png" class="form-control">
                                     <small class="form-control-feedback "> 规定打开文件选择框时，筛选出的文件类型，值为用逗号隔开的 MIME 类型列表。如：acceptMime: 'image/*'（只显示图片文件）
                                         acceptMime: 'image/jpg, image/png'（只显示 jpg 和 png 文件）</small>
-                                    <small class="form-control-feedback "> 如果未设置:默认使用 image/jpg, image/png,image/jpeg</small>
+                                    <small class="form-control-feedback "> 如果未设置:默认使用 image/jpg| image/png| image/jpeg</small>
                                 </div>
 
                             </div>

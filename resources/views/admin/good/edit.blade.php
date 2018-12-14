@@ -70,7 +70,13 @@
                                 <label class="control-label text-right col-md-3">商品列表图片</label>
                                 <div class="col-md-9">
                                     <div class="layui-upload-drag" id="test10">
-                                        <img src="{{$good['list_pic']}}" width="100" alt="">
+                                        @if(old ('list_pic'))
+                                            <img src="{{old ('list_pic')}}" width="50" alt="">
+                                            <input type="hidden" name="list_pic" value="{{old ('list_pic')}}">
+                                        @else
+                                            <img src="{{$good['list_pic']}}" alt="" width="50">
+                                            <input type="hidden" name="list_pic" value="{{$good['list_pic']}}">
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -81,9 +87,22 @@
                                         <button type="button" class="layui-btn" id="test2">多图片上传</button>
                                         <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
                                             <div class="layui-upload-list" id="demo2">
-                                                @foreach($good['pics'] as $v)
-                                                    <img src="{{$v}}" width="100" alt="">
-                                                @endforeach
+                                                @if(old ('pics'))
+                                                    @foreach(old ('pics') as $v)
+                                                        <li>
+                                                            <img src="{{$v}}" width="50" height="50" alt="">
+                                                            <input type="hidden" name="list_pic"
+                                                                   value="{{$v}}">
+                                                        </li>
+                                                    @endforeach
+                                                @else
+                                                    @foreach($good['pics'] as $v)
+                                                        <li>
+                                                            <img src="{{$v}}" width="50" height="50" alt="">
+                                                            <input type="hidden" value="{{$v}}" name="pics[]">
+                                                        </li>
+                                                    @endforeach
+                                                @endif
                                             </div>
                                         </blockquote>
                                     </div>

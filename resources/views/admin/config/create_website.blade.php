@@ -35,7 +35,7 @@
                                     <div class="layui-upload-drag" id="test10">
                                         @if(isset($config['data']['site_logo']))
                                             <img src="{{$config['data']['site_logo']}}" width="80" alt="">
-                                            <input type="hidden" name="site_logo" value="">
+                                            <input type="hidden" name="site_logo" value="{{$config['data']['site_logo']}}">
                                         @else
                                             <i class="layui-icon"></i>
                                             <p>点击上传，或将文件拖拽到此处</p>

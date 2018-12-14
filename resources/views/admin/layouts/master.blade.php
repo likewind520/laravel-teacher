@@ -11,7 +11,7 @@
     <!-- Favicon icon -->
 
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('org/assets/')}}/images/favicon.png">
-    <title>黎明之光</title>
+    <title>{{hd_config('website.site_name')}}</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('org/assets/')}}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->

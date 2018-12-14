@@ -1,9 +1,17 @@
 <?php
 
+//前台路由
+Route::get( '/' , 'Home\IndexController@index');
+Route::group( ['prefix' => 'home' , 'namespace' => 'Home' , 'as' => 'home.'] , function ()
+{
+    Route::get ('/','IndexController@index')->name ('home');
+//    Route::get ('list/{list}','ListController@index')->name ('list');
+//    Route::get ('content/{content}','ContentController@index')->name ('content');
+    //根据规格请求对应的库存
+//    Route::post ('spec_to_get_total','ContentController@specGetTotal')->name ('spec_to_get_total');
 
-Route::get('/', function () {
-    return view('welcome');
 });
+
 //后台不需要登录拦截
 Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
     //登录页面

@@ -45,7 +45,7 @@
                                 @foreach($categories as $category)
                                     <tr>
                                         <td>{{$category['id']}}</td>
-                                        <td>{{$category['_name']}}</td>
+                                        <td>{!! $category['_name'] !!}</td>
                                         <td>
                                             <a href="{{route('admin.category.edit',['id'=>$category['id']])}}"> <i
                                                     class="fa fa-pencil text-inverse m-r-10"></i> </a>
