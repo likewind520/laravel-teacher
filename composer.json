@@ -12,6 +12,7 @@
         "barryvdh/laravel-ide-helper": "^2.5",
         "fideloper/proxy": "^4.0",
         "houdunwang/arr": "^2.0",
+        "houdunwang/laravel": "^1.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0"
     },
@@ -45,7 +46,10 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/helper.php"
+        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Config;
+use App\Observers\ConfigObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -16,6 +18,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //解决版本低于5.7.7
         Schema::defaultStringLength(191);
+        //注册观察者
+        Config::observe(ConfigObserver::class);
     }
 
     /**
