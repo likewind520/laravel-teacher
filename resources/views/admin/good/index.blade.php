@@ -39,8 +39,8 @@
                                     <th>#</th>
                                     <th>商品名称</th>
                                     <th>商品图片</th>
-                                    <th>商品图册</th>
-                                    <th>商品价格(元/件)</th>
+                                    {{--<th>商品图册</th>--}}
+                                    <th>商品价格</th>
                                     {{--<th>商品规格</th>--}}
                                     {{--<th>商品库存</th>--}}
                                     <th>所属分类</th>
@@ -56,12 +56,12 @@
                                         <td>
                                             <img src="{{$good['list_pic']}}" style="width: 50px">
                                         </td>
-                                        @foreach($good['pics'] as $v)
-                                        <td>
-                                            <img src="{{$v}}" style="width: 50px">
-                                        </td>
-                                        @endforeach
-                                        <td>{{$good['price']}}</td>
+                                        {{--@foreach($good['pics'] as $v)--}}
+                                        {{--<td>--}}
+                                            {{--<img src="{{$v}}" style="width: 50px">--}}
+                                        {{--</td>--}}
+                                        {{--@endforeach--}}
+                                        <td style="color: red">{{$good['price']}}元</td>
                                         {{--<td>--}}
                                             {{--{{implode(',',$good->spec->pluck('spec')->toArray())}}--}}
                                         {{--</td>--}}

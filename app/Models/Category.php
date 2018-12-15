@@ -52,5 +52,10 @@ class Category extends Model
         }
         return $temp;
     }
+    //关联商品 一对多正向
+    public function good ()
+    {
+        return $this->hasMany( Good::class );
+    }
 
 }

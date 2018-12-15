@@ -5,10 +5,10 @@ Route::get( '/' , 'Home\IndexController@index');
 Route::group( ['prefix' => 'home' , 'namespace' => 'Home' , 'as' => 'home.'] , function ()
 {
     Route::get ('/','IndexController@index')->name ('home');
-//    Route::get ('list/{list}','ListController@index')->name ('list');
-//    Route::get ('content/{content}','ContentController@index')->name ('content');
+    Route::get ('list/{list}','ListController@index')->name ('list');
+    Route::get ('content/{content}','ContentController@index')->name ('content');
     //根据规格请求对应的库存
-//    Route::post ('spec_to_get_total','ContentController@specGetTotal')->name ('spec_to_get_total');
+    Route::post ('spec_to_get_total','ContentController@specGetTotal')->name ('spec_to_get_total');
 
 });
 

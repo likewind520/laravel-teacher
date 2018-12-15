@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>XX前台</title>
+    <title>商城首页</title>
     <script src="{{asset ('org/home')}}/js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
     @stack('css')
     @stack('js')
@@ -87,6 +87,7 @@
                     <li class="menulist">
                         <a href="{{route ('home.list',['list'=>$category['id']])}}">{{$category['name']}}</a>
                         @if($category->good->count() != 0)
+
                             <div class="menuHiden">
                                 <ul class="product">
                                     @foreach($category->good as $good)
