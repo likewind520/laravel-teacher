@@ -34,8 +34,8 @@
             </div>
             <div class="topright fr">
                 <div class="login fl">
-                    <a href="#">登录</a>
-                    <a href="#">注册</a>
+                    <a href="{{route('login')}}">登录</a>
+                    <a href="{{route('register')}}">注册</a>
                 </div>
                 <span class="fl">|</span>
                 <div class="fcode fl">

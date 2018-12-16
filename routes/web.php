@@ -9,8 +9,17 @@ Route::group( ['prefix' => 'home' , 'namespace' => 'Home' , 'as' => 'home.'] , f
     Route::get ('content/{content}','ContentController@index')->name ('content');
     //根据规格请求对应的库存
     Route::post ('spec_to_get_total','ContentController@specGetTotal')->name ('spec_to_get_total');
-
 });
+//登录
+Route::get('/login','UserController@login')->name('login');
+Route::post('/login','UserController@loginFrom')->name('login');
+//注册
+Route::get('/register','UserController@register')->name('register');
+Route::post('/register','UserController@store')->name('register');
+//密码重置
+Route::get('/passwordReset','UserController@password_reset')->name('passwordReset');
+//重置密码提交
+Route::post('/passwordReset','UserController@password_resetForm')->name('passwordReset');
 
 //后台不需要登录拦截
 Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
@@ -36,5 +45,8 @@ Route::group(['middleware' => ['admin.auth'],'prefix' => 'admin', 'namespace' =>
 Route::group( ['prefix' => 'util' , 'namespace' => 'Util' , 'as' => 'util.'] , function () {
     //上传
     Route::any( '/upload' , 'UploadController@upload' )->name( 'upload' );
+    //验证码发送
+    Route::any( '/code/send' , 'CodeController@send' )->name( 'code.send' );
+
 } );
 
