@@ -123,9 +123,16 @@
                 dataType:'json',
                 success:function (response) {
                     if(response.code ==0 ){
-                        location.href = "{{route('login')}}"
+                        location.href = "{{route('login')}}?from={{url()->full()}}"
                     }else{
-
+                        layer.msg(response.message, {icon: 6}, function () {
+                            //关闭后的操作
+                        });
+                        // swal({
+                        //     text: response.message,
+                        //     icon: "success",
+                        //     button: false
+                        // });
                     }
                 },
                 error:function (error) {
