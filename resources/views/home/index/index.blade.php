@@ -16,7 +16,11 @@
 
                                     @foreach($v['_data'] as $vv)
                                         <dl>
-                                            <dt>{{$vv['name']}}&gt;</dt>
+                                            {{--<dt><a href="{{route ('home.list',['list'=>$vv['id']])}}">{{$vv['name']}}</a>&gt;</dt>--}}
+                                            <dt>
+                                                <a style="margin-left: -22px" href="{{route ('home.list',['list'=>$vv['id']])}}">{{$vv['name']}}&gt;</a>
+                                                {{--{{$vv['name']}}--}}
+                                            </dt>
 
                                             @foreach($vv['_data'] as $vvv)
                                                 <dd>

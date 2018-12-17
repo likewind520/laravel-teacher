@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+
+    public static $temp = [];
     //获得树状结构
     //Arr::tree($data, $title, $fieldPri = 'cid', $fieldPid = 'pid');
     //(实例化对象)->tree( 数组 , '字段名称' , '主键id' , '父级id' );
@@ -56,6 +58,24 @@ class Category extends Model
     public function good ()
     {
         return $this->hasMany( Good::class );
+    }
+    //面包屑 递归子找父级栏目
+    public function getFacher ( $data , $id )
+    {
+
+        static $temp = [];
+        foreach ( $data as $v )
+        {
+            if ( $v['id'] == $id )
+            {
+                $temp[] = $v;
+                //dd($temp); //$temp存的是当前id的所有数据
+                $this->getFacher ( $data , $v['pid'] );
+                //dd($temp);   //$temp存的是当前id的所有父级包括自己的数据
+            }
+        }
+
+        return $temp;
     }
 
 }

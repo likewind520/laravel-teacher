@@ -34,14 +34,20 @@
             </div>
             <div class="topright fr">
                 <div class="login fl">
-                    <a href="{{route('login')}}">登录</a>
-                    <a href="{{route('register')}}">注册</a>
+                    @auth()
+                        <a href="">{{auth ()->user ()->name}}</a>
+                        <a href="{{route ('logout')}}">注销</a>
+                    @else
+                        <a href="{{route ('login')}}">登录</a>
+                        <a href="{{route ('register')}}">注册</a>
+                    @endauth
                 </div>
-                <span class="fl">|</span>
-                <div class="fcode fl">
-
-                    <a href="">我的订单</a>
-                </div>
+                @auth()
+                    <span class="fl">|</span>
+                    <div class="fcode fl">
+                        <a href="">我的订单</a>
+                    </div>
+                @endauth
             </div>
         </div>
     </div>

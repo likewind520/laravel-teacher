@@ -9,6 +9,8 @@ Route::group( ['prefix' => 'home' , 'namespace' => 'Home' , 'as' => 'home.'] , f
     Route::get ('content/{content}','ContentController@index')->name ('content');
     //根据规格请求对应的库存
     Route::post ('spec_to_get_total','ContentController@specGetTotal')->name ('spec_to_get_total');
+    //添加购物车
+    Route::resource('cart','CartController');
 });
 //登录
 Route::get('/login','UserController@login')->name('login');
@@ -16,10 +18,20 @@ Route::post('/login','UserController@loginFrom')->name('login');
 //注册
 Route::get('/register','UserController@register')->name('register');
 Route::post('/register','UserController@store')->name('register');
+//加载忘记密码页面
+Route::get ( 'forget_password' , 'UserController@forgetPasswordView' )->name ( 'forget_password' );
+Route::post ( 'forget_password' , 'UserController@forgetPassword' )->name ( 'forget_password' );
+//重置密码
+//重置密码
+Route::get ( 'reset_password/{token}' , 'UserController@resetPasswordView' )->name ( 'reset_password' );
+Route::post ( 'reset_password/{token}' , 'UserController@resetPassword' )->name ( 'reset_password_post' );
 //密码重置
-Route::get('/passwordReset','UserController@password_reset')->name('passwordReset');
+//Route::get('/passwordReset','UserController@password_reset')->name('passwordReset');
 //重置密码提交
-Route::post('/passwordReset','UserController@password_resetForm')->name('passwordReset');
+//Route::post('/passwordReset','UserController@password_resetForm')->name('passwordReset');
+//注销登录
+Route::get('/logout','UserController@logout')->name('logout');
+
 
 //后台不需要登录拦截
 Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {

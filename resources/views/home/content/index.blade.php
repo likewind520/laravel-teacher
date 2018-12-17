@@ -42,7 +42,7 @@
                         <h4>规格</h4>
                         <ul>
                             @foreach($content->spec as $v)
-                                <li onclick="chooseSpec({{$v['id']}})">{{$v['spec']}}</li>
+                                <li spec="{{$v['id']}}" onclick="chooseSpec({{$v['id']}})">{{$v['spec']}}</li>
                             @endforeach
                         </ul>
                     </div>
@@ -51,11 +51,15 @@
                         <a href="javascript:;" class="num_l">-</a>
                         <input type="text" value="1"/>
                         <a href="javascript:;" class="num_r">+</a>
-
+                    </div>
+                    <div class="num">
+                        <h5>库存</h5>
                         <span id="cr_total" style="margin-left: 20px">{{$content['total']}}</span>
                     </div>
                     <div class="nobdr">
-                        <h6 class="disabled"><a href="">加入购物车</a></h6>
+                        <h6 class="disabled" >
+                            <a href="javascript:;" onclick="addCart(this)">加入购物车</a>
+                        </h6>
                     </div>
                     <div class="houdun">
                         <h3>保障</h3>
@@ -98,6 +102,31 @@
 @push('js')
     <script src="{{asset ('org/home')}}/js/list.js" type="text/javascript" charset="utf-8"></script>
     <script src="{{asset ('org/layer/layer.js')}}"></script>
+    <script>
+    function addCart (obj) {
+        if ($(obj).parents('h6').hasClass('disabled')) {
+            layer.msg('请先选择规格');
+            return;
+        }else {
+            $.ajax({
+                url:'{{route('home.cart.store')}}',
+                type:'post',
+                data:{
+                    id:"{{$content['id']}}",
+                    spec:$('.content-right .category ul').find('li.zhong').attr('spec'),
+                    num:$('.num').find('input').val()
+                },
+                dataType:'json',
+                success:function (respones) {
+                    console.log(respones)
+                },
+                error:function (respones) {
+
+                }
+            })
+        }
+    }
+    </script>
     <script>
         //参数,规格 id
         function chooseSpec(id){

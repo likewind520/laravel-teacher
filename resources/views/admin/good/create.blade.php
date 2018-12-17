@@ -224,7 +224,7 @@
                         $('#demo2').append('<img src="' + res.data.src + '" alt="" width="50" class="layui-upload-img"><input type="hidden" name="pics[]" value="' + res.data.src + '">')
                     } else {
                         swal({
-                            text: res.msg,
+                            text: res.message,
                             icon: "warning",
                             button: false
                         });

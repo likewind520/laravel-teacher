@@ -12,7 +12,7 @@ class UploadException extends Exception
         //return response()->json(hdjs要求返回,http状态码);
         //return response()->json([我们自行定义],200);
         //return response()->json(['message'=>$this->getMessage(),'code'=>403],200);
-        return response()->json(['msg'=>$this->getMessage(),'code'=>1],200);
+        return response()->json(['message'=>$this->getMessage(),'code'=>1],200);
 
     }
 

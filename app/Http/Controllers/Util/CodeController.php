@@ -11,13 +11,13 @@ class CodeController extends Controller
 {
     //发送验证码
     public function send(Request $request){
-//        dd($request->all());
+        //dd($request->all());
         //dd($request->username);
         //随机获取验证码
         $code=$this->random();
        //dd($code);
         //发送验证码
-        $user=User::firstOrNew(['email'=>$request->id]);
+        $user=User::firstOrNew(['email'=>$request->email]);
         //dd($user);
         //dd($user->toArray());
         //需要创建通知类:php artisan make:notification  RegisterNotify

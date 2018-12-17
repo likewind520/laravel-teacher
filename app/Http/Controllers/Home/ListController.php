@@ -26,6 +26,15 @@ class ListController extends CommonController
             $goods = $goods->orderBy('price','desc');
         }
         $goods = $goods->orderBy('created_at','desc')->paginate(10);
-        return view ( 'home.list.index' ,compact ('goods','list'));
+        //获取当前栏目所有儿子栏目
+        $sonCategoy = Category::where('pid',$list)->get();
+        //dd($sonCategoy);
+        //面包屑(递归找父) 用到"首页>家用电器>电视机"
+        //$list 是路由参数,模板中的id
+        $fatherData = $category->getFacher($categories,$list);
+        //数组翻转 array_reverse
+        $fatherData = array_reverse ($fatherData);
+        //dd($fatherData);
+        return view ( 'home.list.index' ,compact ('goods','list','sonCategoy','fatherData'));
     }
 }
