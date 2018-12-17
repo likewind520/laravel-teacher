@@ -58,7 +58,11 @@
                     </div>
                     <div class="nobdr">
                         <h6 class="disabled" >
-                            <a href="javascript:;" onclick="addCart(this)">加入购物车</a>
+                            @auth()
+                                <a href="javascript:;" onclick="addCart(this)">加入购物车</a>
+                            @else
+                                <a href="{{route('login',['from'=>url()->full()])}}" >加入购物车</a>
+                            @endauth
                         </h6>
                     </div>
                     <div class="houdun">
@@ -117,11 +121,15 @@
                     num:$('.num').find('input').val()
                 },
                 dataType:'json',
-                success:function (respones) {
-                    console.log(respones)
-                },
-                error:function (respones) {
+                success:function (response) {
+                    if(response.code ==0 ){
+                        location.href = "{{route('login')}}"
+                    }else{
 
+                    }
+                },
+                error:function (error) {
+                    console.log(error)
                 }
             })
         }

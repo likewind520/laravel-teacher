@@ -11,11 +11,11 @@ use App\Http\Controllers\Controller;
 
 class CartController extends Controller
 {
-//    public function __construct(){
-//        $this->middleware('auth',[
-//            'except'=>[],
-//        ]);
-//    }
+    public function __construct(){
+        $this->middleware('auth',[
+            'except'=>[],
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -70,7 +70,7 @@ class CartController extends Controller
             $newCart->num = (int)$newCart['num'] + (int)$request->num;
             $newCart->save();
         }
-            return ['code'=>1,'message'=>'添加成功'];
+        return ['code'=>1,'message'=>'添加成功'];
     }
 
     /**
