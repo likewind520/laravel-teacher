@@ -9,12 +9,13 @@ use Doctrine\DBAL\Schema\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CartController extends Controller
+class CartController extends CommonController
 {
     public function __construct(){
         $this->middleware('auth',[
             'except'=>[],
         ]);
+        parent::__construct();
     }
     /**
      * Display a listing of the resource.
@@ -23,7 +24,16 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        //dd(1);
+        //获得当前用户所有的商品
+        $carts=Cart::where('user_id',auth()->id())->get();
+        //这个循环是什么意思?
+        foreach($carts as $k=>$cart){
+            //给下标一个名为checked值为false的属性标识,
+            $carts[$k]['checked'] = false;
+        }
+        //dd($carts->toArray());
+        return view('home.cart.index',compact('carts'));
     }
 
     /**
@@ -33,7 +43,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -104,17 +114,19 @@ class CartController extends Controller
      */
     public function update(Request $request, Cart $cart)
     {
-        //
+        //dd($request->all());
+        //dd($cart);
+        $cart->num=$request->num;
+        $cart->save();
+        //$cart->update(['num'=>$request->num]);
+        return [ 'code'=>1 , 'msg'=>'更新成功' ];
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Cart $cart)
+    //删除
+    public function destroy(Request $request,Cart $cart)
     {
-        //
+
+        $cart->delete();
+        return [ 'code'=>1 , 'msg'=>'删除成功' ];
     }
 }

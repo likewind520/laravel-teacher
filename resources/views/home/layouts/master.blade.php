@@ -6,7 +6,7 @@
     <title>商城首页</title>
     <script src="{{asset ('org/home')}}/js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
     @stack('css')
-    @stack('js')
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         $(function () {
@@ -35,10 +35,10 @@
             <div class="topright fr">
                 <div class="login fl">
                     @auth()
-                        <a href="">{{auth ()->user ()->name}}</a>
-                        <a href="{{route ('logout')}}">注销</a>
+                        <a href="{{route('home.personal_center')}}">{{auth ()->user ()->name}}</a>
+                        <a href="{{route ('logout',['from'=>url ()->full()])}}">注销</a>
                     @else
-                        <a href="{{route ('login')}}">登录</a>
+                        <a href="{{route ('login',['from'=>url ()->full()])}}">登录</a>
                         <a href="{{route ('register')}}">注册</a>
                     @endauth
                 </div>
@@ -73,7 +73,7 @@
 
                 </div>
                 <div class="topshopcart fr">
-                    <a href="" class="header-cart"><i></i>我的购物车<span class="cart-size">(0)</span></a>
+                    <a href="{{route('home.cart.index')}}" class="header-cart"><i></i>我的购物车<span class="cart-size">(0)</span></a>
                     <div class="cart-tips">
                         请
                         <a href="">登录</a>后查看您的购物车。
@@ -242,8 +242,8 @@
     </ul>
 
 </div>
-
 <!--左侧楼层结束-->
+@stack('js')
 </body>
 
 </html>

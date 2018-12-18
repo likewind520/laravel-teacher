@@ -85,8 +85,7 @@
                     </ul>
                 </div>
             </div>
-
-            <div class="con">
+            <div class="con"  style="width: 1240px;margin: 0 auto;margin-bottom: 30px">
                 {!! $content['content'] !!}
             </div>
         </div>
@@ -123,16 +122,10 @@
                 dataType:'json',
                 success:function (response) {
                     if(response.code ==0 ){
+                        {{--{{url()->full()}}当前页面的地址--}}
                         location.href = "{{route('login')}}?from={{url()->full()}}"
                     }else{
-                        layer.msg(response.message, {icon: 6}, function () {
-                            //关闭后的操作
-                        });
-                        // swal({
-                        //     text: response.message,
-                        //     icon: "success",
-                        //     button: false
-                        // });
+                        location.href = '{{route('home.cart.index')}}'
                     }
                 },
                 error:function (error) {

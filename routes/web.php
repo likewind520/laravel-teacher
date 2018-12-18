@@ -11,6 +11,12 @@ Route::group( ['prefix' => 'home' , 'namespace' => 'Home' , 'as' => 'home.'] , f
     Route::post ('spec_to_get_total','ContentController@specGetTotal')->name ('spec_to_get_total');
     //添加购物车
     Route::resource('cart','CartController');
+    //结算
+    Route::resource('order','OrderController');
+    //个人中心
+    Route::get('personal_center','PersonalCenterController@index')->name('personal_center');
+    //支付
+
 });
 //登录
 Route::get('/login','UserController@login')->name('login');

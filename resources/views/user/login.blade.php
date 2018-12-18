@@ -39,7 +39,7 @@
 <section id="wrapper" class="login-register login-sidebar"  style="background-image:url(/org/assets/images/background/login-register.jpg);">
     <div class="login-box card">
         <div class="card-body">
-            <form class="form-horizontal form-material" id="loginform" action="{{route('login')}}" method="post">
+            <form class="form-horizontal form-material" id="loginform" action="{{route('login',['from'=>request()->query('from')])}}" method="post">
                 @csrf
                 <a href="/" class="text-center db">
                     <br/>
@@ -91,6 +91,7 @@
 
         </div>
     </div>
+    @include('layouts.message')
 </section>
 <!-- ============================================================== -->
 <!-- End Wrapper -->
@@ -108,7 +109,7 @@
 <script src="{{asset('org/assets/')}}/plugins/sparkline/jquery.sparkline.min.js"></script>
 <script src="{{asset('org/assets/js')}}/custom.min.js"></script>
 <script src="{{asset('org/assets/')}}/plugins/styleswitcher/jQuery.style.switcher.js"></script>
-@include('layouts.message')
+
 </body>
 
 </html>

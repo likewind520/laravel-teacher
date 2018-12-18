@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Home\CommonController;
 use App\Http\Requests\PasswordResetRequest;
 use App\Http\Requests\UserRequest;
 use App\Notifications\ResetPasswordNotify;
 use App\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class UserController extends CommonController
 {
-//    public function __construct()
-//    {
-//        $this->middleware('guest',[
-//            'only'=>['login','loginForm','register','store','password_reset','password_resetForm']
-//        ]);
-//    }
+    public function __construct()
+    {
+        $this->middleware( 'auth' , [
+            'only'=>[ 'edit' , 'update' ]
+        ] );
+        parent::__construct();
+    }
+
 //    登录页面
     public function login()
     {
@@ -49,16 +52,16 @@ class UserController extends Controller
         //\Auth::attempt()框架中自带的自动验证系统
         if (\Auth::attempt($validate, $remember)) {
             //如果登录页面地址栏接收到from参数，
-//        if ($request->from){
-//            return redirect($request->from)->with('success', '登录成功');
-//        }else{
-            //如果没有就跳到首页
-            return redirect()->route('home.home')->with('success', '登录成功');
-//        }
+            if ($request->from) {
+                return redirect($request->from)->with('success', '登录成功');
+            } else {
+                //如果没有就跳到首页
+                return redirect()->route('home.home')->with('success', '登录成功');
+            }
         }
 
         //登录失败返回
-        return redirect()->back()->with('danger', '登录失败');
+        return redirect()->back()->with('danger', '账户或密码不正确');
     }
     //重置密码 用另外发邮箱连接的方式更改密码,不需要发送验证码
 //    public function password_reset()
@@ -81,13 +84,13 @@ class UserController extends Controller
 //        return redirect()->back()->with('danger', '邮箱已注册');
 //    }
 
-    public function logout()
+    public function logout(Request $request)
     {
 
         //框架自带的
         \Auth::logout();
-
-        return redirect()->route('home.home');
+        //dd($request->query('from'));
+        return redirect($request->query ( 'from' ) ?: '/' );
 
     }
 
@@ -239,7 +242,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+//        return view( 'home.user.edit' , compact( 'user' ) );
     }
 
     /**
