@@ -15,7 +15,12 @@ Route::group( ['prefix' => 'home' , 'namespace' => 'Home' , 'as' => 'home.'] , f
     Route::resource('order','OrderController');
     //个人中心
     Route::get('personal_center','PersonalCenterController@index')->name('personal_center');
-    //支付
+    //个人信息
+    Route::get('personal_centerme','PersonalCenterController@editMessage')->name('personal_centerme');
+    //支付模板页面
+    Route::get( 'pay' , 'PayController@index' )->name( 'pay' );
+    //地址管理
+    Route::resource('address','AddressController');
 
 });
 //登录
@@ -31,10 +36,6 @@ Route::post ( 'forget_password' , 'UserController@forgetPassword' )->name ( 'for
 //重置密码
 Route::get ( 'reset_password/{token}' , 'UserController@resetPasswordView' )->name ( 'reset_password' );
 Route::post ( 'reset_password/{token}' , 'UserController@resetPassword' )->name ( 'reset_password_post' );
-//密码重置
-//Route::get('/passwordReset','UserController@password_reset')->name('passwordReset');
-//重置密码提交
-//Route::post('/passwordReset','UserController@password_resetForm')->name('passwordReset');
 //注销登录
 Route::get('/logout','UserController@logout')->name('logout');
 

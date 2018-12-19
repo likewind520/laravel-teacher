@@ -26,15 +26,15 @@
                                     <select name="quiz3" lay-filter="c" id="c"></select>
                                 </div>
                             </div>
-                            <div class="layui-form-item">
-                                <label class="layui-form-label">用户头像</label>
-                                <div class="layui-input-block">
-                                    <div class="layui-inline">
-                                        <img src="https://cdn.layui.com/avatar/168.jpg?t=1490352249902" class="layui-circle">
-                                    </div>
-                                    <input type="text" name="icon" value="" hidden>
-                                </div>
-                            </div>
+                            {{--<div class="layui-form-item">--}}
+                                {{--<label class="layui-form-label">用户头像</label>--}}
+                                {{--<div class="layui-input-block">--}}
+                                    {{--<div class="layui-inline">--}}
+                                        {{--<img src="https://cdn.layui.com/avatar/168.jpg?t=1490352249902" class="layui-circle">--}}
+                                    {{--</div>--}}
+                                    {{--<input type="text" name="icon" value="" hidden>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                             <div class="layui-form-item">
                                 <label class="layui-form-label">用户邮箱</label>
                                 <div class="layui-input-block">
@@ -81,17 +81,19 @@
 @endsection
 @push('css')
     <link rel="stylesheet" type="text/css" href="{{asset ('org/home')}}/css/account.css"/>
+    <link rel="stylesheet" type="text/css" href="{{asset ('org/layui')}}/css/layui.css"/>
 @endpush
 @push('js')
     {{--三级城市联动--}}
     <script src="https://cdn.bootcss.com/distpicker/2.0.5/distpicker.min.js"></script>
     <script src="{{asset ('org/home')}}/js/list.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{asset('org/layui/layui.js')}}"></script>
     <script>
         //城市联动
         $("#distpicker").distpicker({
-            province: '山西省',
-            city: '临汾市',
-            district: '尧都区'
+            province: '湖北省',
+            city: '天门市',
+            district: '竟陵街道'
         });
         layui.use(['form', 'layedit', 'laydate'], function () {
             var form = layui.form

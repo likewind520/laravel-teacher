@@ -274,18 +274,18 @@ $(function() {
     // });
 
     //
-    // $('.regcontent .layout .reginput input').focus(function(){
-    //     $(this).css({'border-color':'#36aa3f'});
-    // });
-    // $('.regcontent .layout .reginput input').blur(function(){
-    //     $(this).css({'border-color':'#ccc'});
-    // });
-    //
-    // $('.listcontent ul li .listdesc').hover(function(){
-    //     $(this).stop(true,true).animate({"top":"-5px"},300);
-    // },function(){
-    //     $(this).stop(true,true).animate({"top":"0px"},300);
-    // });
+    $('.regcontent .layout .reginput input').focus(function(){
+        $(this).css({'border-color':'#36aa3f'});
+    });
+    $('.regcontent .layout .reginput input').blur(function(){
+        $(this).css({'border-color':'#ccc'});
+    });
+
+    $('.listcontent ul li .listdesc').hover(function(){
+        $(this).stop(true,true).animate({"top":"-5px"},300);
+    },function(){
+        $(this).stop(true,true).animate({"top":"0px"},300);
+    });
 
 
 })

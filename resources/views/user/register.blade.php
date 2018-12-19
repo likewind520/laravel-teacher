@@ -101,7 +101,9 @@
                 </div>
                 <div class="form-group m-b-0">
                     <div class="col-sm-12 text-center">
-                        <p>已有账号? <a href="{{route('login')}}" class="text-info m-l-5"><b>去登陆</b></a></p>
+                        <p>已有账号? <a href="{{route('login')}}" class="text-info m-l-5"><b>去登陆</b></a>
+                        <a href="{{route('home.home')}}" class="text-primary m-l-5" style="margin-left: 80px"><b>返回首页</b></a>
+                        </p>
                     </div>
                 </div>
             </form>

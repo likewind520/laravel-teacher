@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Address;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -27,4 +28,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    //用户关联地址,一对多
+    public function address(){
+        return $this->hasMany(Address::class);
+    }
 }

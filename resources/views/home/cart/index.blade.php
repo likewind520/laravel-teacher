@@ -2,7 +2,7 @@
 @section('content')
     <div id="content">
         <div class="car main">
-            <div class="carshop">
+            <div class="carshop" v-if="carts.length!=0">
                 <div class="cartitle">
                     <div class="carcheck">
                         <div class="checkbox">
@@ -48,16 +48,19 @@
                         </div>
                     </div>
             </div>
+            <div class="carshop" v-else style="padding: 30px;text-align: center">
+                暂无商品
+            </div>
             <div class="jiesuan">
                 <div class="jixu"><a href="">继续购物</a></div>
                 <div class="gongji">共计<span>@{{carts.length}}</span>件商品</div>
                 <div class="heji">合计<span>¥ @{{totalPrice}}元</span></div>
                 <div class="gou">
-                    <a href="{{route('home.order.index')}}">
+                    <a href="javascript:;" @click="goSettlement">
                         <input type="submit" value="去结算">
                     </a>
                 </div>
-
+            {{--@{{hasChecked}}--}}
             </div>
         </div>
 
@@ -71,6 +74,7 @@
     <script src="{{asset ('org/home')}}/js/list.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://cdn.bootcss.com/vue/2.5.21/vue.min.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+    <script src="{{asset ('org/layer/layer.js')}}"></script>
     <script>
         new Vue({
             el: '#content',
@@ -80,16 +84,32 @@
                 hasChecked:[]//记录谁现在是选中状态
             },
             methods:{
+                //结算之前,没选不让结算
+                goSettlement(){
+                    //判断用户是否勾选
+                    if (this.totalPrice==0){
+                        layer.msg('请选择要结算的商品')
+                        return
+                    }else {
+                        //跳转地址后跟着选中的商品
+                        location.href="{{route('home.order.index')}}?ids=" + this.hasChecked
+                    }
+                },
+
                 //全选单机事件 ture/false切换
                 allChecked(){
                     //首先让自己状态 true/false 进行切换
                     this.allCheckStatus =! this.allCheckStatus
                     //根据全选状态变化让单选跟着变化
+                    //每次全选的时候都将之前的清空.
+                    this.hasChecked = [];
                     this.carts.forEach((v,k)=>{
                         if(this.allCheckStatus){
                             v.checked = true;
+                            this.hasChecked.push(v.id);
                         }else{
                             v.checked = false;
+                            this.hasChecked=[];
                         }
                     });
                 },
@@ -101,7 +121,7 @@
                         this.hasChecked.push(v.id);
                     }else{
                         //检测指定元素在数组中位置indexOf,如果元素在数组检测元素,返回该元素位置,如果找不见制定元素,返回-1
-                        var pos = this.hasChecked.indexOf(1);
+                        var pos = this.hasChecked.indexOf(v.id);
                         //console.log(pos);
                         //如果取消选中,将当前取消购物车 id 冲数组踢出去
                         this.hasChecked.splice(pos,1);

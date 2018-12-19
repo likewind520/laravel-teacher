@@ -84,8 +84,11 @@
                 </div>
                 <div class="form-group m-b-0">
                     <div class="col-sm-12 text-center">
-                        <p>还冇账号? <a href="{{route('register')}}" class="text-primary m-l-5"><b>去注册</b></a></p>
-                    </div>
+                        <p>还冇账号?
+                            <a href="{{route('register')}}" class="text-primary m-l-5"><b>去注册</b></a>
+                            <a href="{{route('home.home')}}" class="text-primary m-l-5" style="margin-left: 80px"><b>返回首页</b></a>
+
+                        </p>
                 </div>
             </form>
 

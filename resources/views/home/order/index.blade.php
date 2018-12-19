@@ -9,20 +9,28 @@
             <!--头部结束-->
             <!--地址选择开始-->
             <div class="content-address">
-                <div class="consignee-item">
-                    <span class="radio-img pitchOn"></span>
-                    <label for="adress1" class="radio">
-                        <input type="radio" name="adress" id="adress1" class="radio-select" value=""/><span class="e-name">小明</span>，<span class="city">北京 北京市 朝阳区 </span><span class="city-particular">孙河 顺白路12号 后盾it教育</span>，<span class="codeNumber">15600266727</span>
-                    </label>
-                    <span class="compile"><a class="copyreader" href="{{route('home.personal_center')}}">编辑</a></span>
-                </div>
-                <div class="consignee-item">
-                    <span class="radio-img"></span>
-                    <label for="adress2" class="radio">
-                        <input type="radio" name="adress" id="adress2" class="radio-select" value=""/><span class="e-name">大胖</span>，<span class="city">北京 北京市 朝阳区 </span><span class="city-particular">孙河 顺白路12号 后盾it教育</span>，<span class="codeNumber">15600266727</span>
-                    </label>
-                    <span class="compile"><a class="copyreader" href="javascript:;">编辑</a></span>
-                </div>
+                @if(count($addresses) != 0)
+                    @foreach($addresses as $address)
+                        <div class="consignee-item">
+                            {{--pitchOn--}}
+                            <span class="radio-img  @if($address['is_default']==1) pitchOn @endif" address_id="{{$address['id']}}"></span>
+                            <label for="adress1" class="radio">
+                                <input type="radio" name="adress" id="adress1" class="radio-select" value=""/>
+                                <span class="e-name">
+                                  {{$address['name']}}
+                                </span>，
+                                <span class="city">{{$address['province']}}/{{$address['city']}}/{{$address['district']}}</span>
+                                <span class="city-particular">{{$address['detail']}}</span>，
+                                <span class="codeNumber">{{$address['phone']}}</span>
+                            </label>
+                            <span class="compile"><a class="copyreader" href="javascript:;">编辑</a></span>
+                        </div>
+                    @endforeach
+                @else
+                    <div style="padding: 10px;text-align: center">
+                        您还没有添加地址,请先 <a href="{{route('home.address.create')}}" style="">添加地址</a>
+                    </div>
+                @endif
 
             </div>
             <!--地址选择结束-->
@@ -88,42 +96,26 @@
 
                 <div class="goods-cont">
                     <ul>
+                        @foreach($orders as $order)
                         <li style="padding: 13px;">
                             <div class="gc1">
-                                <img src="images/kouzhao.jpg"/>
-                                <span>原森态 主动送风式防护口罩 防雾霾pm2.5（钛晶灰）</span>
+                                <img src="{{$order['pic']}}"/>
+                                <span>{{$order['title']}}({{$order['spec']}})</span>
                             </div>
                             <div class="gc2">
                                 ¥
-                                <span>298.00</span>
+                                <span>{{$order['price']}}元</span>
                             </div>
                             <div class="gc3">
                                 X
-                                <span>1</span>
+                                <span>{{$order['num']}}</span>
                             </div>
                             <div class="gc4">
                                 ¥
-                                <span>298.00</span>
+                                <span>{{$order['num']*$order['price']}}元</span>
                             </div>
                         </li>
-                        <li style="padding: 13px;">
-                            <div class="gc1">
-                                <img src="images/kouzhao.jpg"/>
-                                <span>原森态 主动送风式防护口罩 防雾霾pm2.5（钛晶灰）</span>
-                            </div>
-                            <div class="gc2">
-                                ¥
-                                <span>298.00</span>
-                            </div>
-                            <div class="gc3">
-                                X
-                                <span>1</span>
-                            </div>
-                            <div class="gc4">
-                                ¥
-                                <span>298.00</span>
-                            </div>
-                        </li>
+                       @endforeach
                     </ul>
                 </div>
 
@@ -131,33 +123,62 @@
                 <div class="zongji">
                     <ul>
                         <li>
-                            共<span class="color">2</span>件
+                            共<span class="color">{{count($orders)}}</span>件
                         </li>
                         <li style="margin-top: 15px;">
-                            <h3>应付总金额：<span class="color">1416.00</span>元</h3>
+                            <h3>应付总金额：<span class="color">{{$totalprice}}</span>元</h3>
                         </li>
                     </ul>
                 </div>
 
                 <!--确认地址-->
                 <div class="mailTo">
-                    <p>寄送至：<span class="m-city">北京 北京市 朝阳区 </span><span class="m-particular">孙河 顺白路12号 后盾it教育</span></p>
-                    <p><span class="m-name">贾博雨</span> (收件人) <span class="m-number">15600266727</span> </p>
+                    @if($defaultAddresses)
+                        <p>寄送至：<span class="m-city">{{$defaultAddresses['province']}}/{{$defaultAddresses['city']}}/{{$defaultAddresses['district']}}</span><span class="m-particular">{{$defaultAddresses['detail']}}</span></p>
+                        <p><span class="m-name">{{$defaultAddresses['name']}}</span> (收件人) <span class="m-number">{{$defaultAddresses['phone']}}</span></p>
+                    @else
+                        <p>寄送至：
+                            <span class="m-city"></span>
+                            <span class="m-particular"></span>
+                        </p>
+                        <p>
+                            <span class="m-name"></span>
+                            <span class="m-number">
+                            </span>
+                        </p>
+                    @endif
                 </div>
                 <div class="" style="overflow: hidden;">
-                    <a href="" class="liji">立即下单</a>
+                    <a href="javascript:;" onclick="send()" class="liji">立即下单</a>
                 </div>
-
             </div>
-
-
         </div>
     </div>
 @endsection
 @push('css')
-    <link rel="stylesheet" type="text/css" href="{{asset ('org/home')}}/css/account.css"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('org/home')}}/css/account.css"/>
 @endpush
 @push('js')
     <script src="{{asset ('org/home')}}/js/list.js" type="text/javascript" charset="utf-8"></script>
     <script src="{{asset ('org/home')}}/js/account.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        function send() {
+            //检测是否有选中地址
+            let len = $('.content-address').find('span.pitchOn').length;
+            if(len ==0){
+                layer.msg('请先选择提交地址');
+                return ;
+            }
+            //提交订单
+            $.post("{{route('home.order.store')}}",{
+                address_id:$('.content-address').find('span.pitchOn').attr('address_id'),
+                ids:"{{request()->query('ids')}}"
+            },function (res) {
+                if(res.code == 1){
+                    location.href = '{{route('home.pay')}}?number=' + res.number;
+                }
+            },'json');
+        }
+    </script>
+
 @endpush
