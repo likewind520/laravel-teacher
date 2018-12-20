@@ -242,6 +242,7 @@
     </ul>
 
 </div>
+@include('layouts.message')
 <!--左侧楼层结束-->
 @stack('js')
 </body>

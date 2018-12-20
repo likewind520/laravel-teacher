@@ -18,7 +18,8 @@ class VerifyCsrfToken extends Middleware
      *
      * @var array
      */
+    //设置白名单
     protected $except = [
-        //
+        'home/notify'
     ];
 }

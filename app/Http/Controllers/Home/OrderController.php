@@ -40,6 +40,7 @@ class OrderController extends CommonController
         //dd($addresses);
         //获得当前用户的默认地址
         $defaultAddresses = Address::where('user_id',auth()->id())->where('is_default',1)->first();
+
         return view('home.order.index',compact('orders','totalprice','addresses','defaultAddresses'));
     }
 
@@ -92,6 +93,7 @@ class OrderController extends CommonController
             $orderDetail->spec_id = $v['spec_id'];
             $orderDetail->save();
         }
+
         //清除购物车对应数据
         Cart::whereIn('id',explode(',',$ids))->where('user_id',auth()->id())->delete();
         DB::commit();
@@ -106,7 +108,7 @@ class OrderController extends CommonController
      */
     public function show(Order $order)
     {
-        //
+        return view('home.order.show',compact('order'));
     }
 
     /**

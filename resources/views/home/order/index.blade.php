@@ -19,7 +19,7 @@
                                 <span class="e-name">
                                   {{$address['name']}}
                                 </span>，
-                                <span class="city">{{$address['province']}}/{{$address['city']}}/{{$address['district']}}</span>
+                                <span class="city">{{$address['province']}}/{{$address['city']}}/{{$address['district']}} </span>
                                 <span class="city-particular">{{$address['detail']}}</span>，
                                 <span class="codeNumber">{{$address['phone']}}</span>
                             </label>
@@ -143,8 +143,7 @@
                         </p>
                         <p>
                             <span class="m-name"></span>
-                            <span class="m-number">
-                            </span>
+                            <span class="m-number"></span>
                         </p>
                     @endif
                 </div>
@@ -169,6 +168,7 @@
                 layer.msg('请先选择提交地址');
                 return ;
             }
+
             //提交订单
             $.post("{{route('home.order.store')}}",{
                 address_id:$('.content-address').find('span.pitchOn').attr('address_id'),

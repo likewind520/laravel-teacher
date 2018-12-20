@@ -19,6 +19,10 @@ Route::group( ['prefix' => 'home' , 'namespace' => 'Home' , 'as' => 'home.'] , f
     Route::get('personal_centerme','PersonalCenterController@editMessage')->name('personal_centerme');
     //支付模板页面
     Route::get( 'pay' , 'PayController@index' )->name( 'pay' );
+    //微信支付回调通知
+    Route::any('notify','PayController@notify')->name('notify');
+    //检测订单是否支付
+    Route::post('check_order_status','PayController@checkOrderStatus')->name('check_order_status');
     //地址管理
     Route::resource('address','AddressController');
 
