@@ -23,6 +23,8 @@ Route::group( ['prefix' => 'home' , 'namespace' => 'Home' , 'as' => 'home.'] , f
     Route::any('notify','PayController@notify')->name('notify');
     //检测订单是否支付
     Route::post('check_order_status','PayController@checkOrderStatus')->name('check_order_status');
+    //qq 回调地址
+    Route::get('qq_back','IndexController@qqBack')->name('qq_back');
     //地址管理
     Route::resource('address','AddressController');
 
@@ -63,6 +65,8 @@ Route::group(['middleware' => ['admin.auth'],'prefix' => 'admin', 'namespace' =>
     //配置项管理
     Route::get('config/edit/{name}','ConfigController@edit')->name('config.edit');
     Route::post('config/update/{name}','ConfigController@update')->name('config.update');
+    //订单管理
+    Route::resource('order','OrderController');
 });
 //工具类
 Route::group( ['prefix' => 'util' , 'namespace' => 'Util' , 'as' => 'util.'] , function () {

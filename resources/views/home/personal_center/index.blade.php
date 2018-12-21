@@ -1,5 +1,15 @@
 @extends('home.layouts.master')
 @section('content')
+    <style>
+        .dingdan th
+        {
+            text-align: center;
+        }
+        .dingdan td
+        {
+            text-align: center;
+        }
+    </style>
     <div id="content" style="background: #f5f5f5;overflow: hidden">
         <div class="ordercontent main">
             @include('home.personal_center.layouts.slider')
@@ -16,20 +26,22 @@
                                     <col>
                                 </colgroup>
                                 <thead>
-                                <tr>
+                                <tr class="dingdan">
+                                    <th>编号</th>
                                     <th>订单号</th>
                                     <th>订单总价</th>
                                     <th>订单数</th>
                                     <th>下单时间</th>
                                     <th>订单状态</th>
-                                    <th>格言</th>
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($orders as $order)
-                                    <tr>
+                                    <tr class="dingdan">
+                                        <td>{{$order['id']}}</td>
                                         <td>{{$order['number']}}</td>
-                                        <td>{{$order['total_price']}}</td>
+                                        <td style="color: red">{{$order['total_price']}}</td>
                                         <td>{{$order['total_num']}}</td>
                                         <td>{{$order->created_at->format('Y-m-d')}}</td>
                                         <td>

@@ -1,5 +1,15 @@
 @extends('home.layouts.master')
 @section('content')
+    <style>
+        .dingdan th
+        {
+            text-align: center;
+        }
+        .dingdan td
+        {
+            text-align: center;
+        }
+    </style>
     <div id="content" style="background: #f5f5f5;overflow: hidden">
         <div class="ordercontent main">
             @include('home.personal_center.layouts.slider')
@@ -34,8 +44,8 @@
                                     <col>
                                 </colgroup>
                                 <thead>
-                                <tr>
-                                    <th>#</th>
+                                <tr class="dingdan">
+                                    <th>编号</th>
                                     <th>商品标题</th>
                                     <th>商品图片</th>
                                     <th>数量</th>
@@ -45,12 +55,12 @@
                                 </thead>
                                 <tbody>
                                 @foreach($order->orderDetail as $orderDetail)
-                                    <tr>
+                                    <tr class="dingdan">
                                         <td>{{$orderDetail['id']}}</td>
                                         <td>{{$orderDetail['title']}}</td>
                                         <td><img src="{{$orderDetail['pic']}}" width="50" alt=""></td>
                                         <td>{{$orderDetail['num']}}</td>
-                                        <td>{{$orderDetail['price']}}</td>
+                                        <td style="color: red">{{$orderDetail['price']}}</td>
                                         <td>{{$orderDetail['price'] * $orderDetail['num']}}</td>
 
                                     </tr>

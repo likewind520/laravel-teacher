@@ -2,7 +2,7 @@
 //助手函数
 if (!function_exists('hd_config')){
     //帮助读取后台配置项数据
-    function hd_config($var){
+    function hd_config($var,$default=''){
         //dd($var);
         static $cache=[];
         //以点分割成数组,再在调用的地方以|做成字符串
@@ -19,6 +19,6 @@ if (!function_exists('hd_config')){
             //dd($cache);
         }
         //isset($cache[$info[0]][$info[1]])?$cache[$info[0]][$info[1]]:''
-        return $cache[$info[0]][$info[1]]??'';
+        return $cache[$info[0]][$info[1]]??$default;
     }
 }

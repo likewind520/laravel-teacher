@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>商城首页</title>
+    <title>{{hd_config('website.site_name')}}</title>
     <script src="{{asset ('org/home')}}/js/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
     @stack('css')
 
@@ -45,7 +45,7 @@
                 @auth()
                     <span class="fl">|</span>
                     <div class="fcode fl">
-                        <a href="">我的订单</a>
+                        <a href="{{route('home.personal_center')}}">我的订单</a>
                     </div>
                 @endauth
             </div>

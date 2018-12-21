@@ -166,7 +166,58 @@
                 </div>
             </div>
             <!--楼层二-->
+            {{--<div class="container" id="floor2">--}}
+            {{--</div>--}}
             <div class="container" id="floor2">
+                <div class="part-title">{{$twoFloor['name']}}</div>
+                <a href="{{route ('home.list',['list'=>1])}}" target="_blank" class="indexmore">更多</a>
+            </div>
+            <div class="container">
+
+                <div class="part-center" style="width: 990px">
+                    <ul>
+                        <?php $i = 0;?>
+                        @foreach($twoFloor['data'] as $v)
+                            <?php $i++;?>
+                            @if($i<3)
+                                <li>
+                                    <a href="{{route ('home.content',['content'=>$v['id']])}}">
+                                        <span class="title">{{$v['title']}}</span>
+                                        <span class="info">{{$v['description']}}</span>
+                                        <span class="price">{{$v['price']}}</span>
+                                        <img width="120" src="{{$v['list_pic']}}" alt=""/>
+                                    </a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="part-right">
+                    <p class="part-suggest-title">热销推荐</p>
+                    <div class="slideBox">
+                        <div class="slider-film">
+                            <?php $i = 0;?>
+                            @foreach($twoFloor['data'] as $v)
+                                <?php $i++;?>
+                                @if($i>=3 and $i<5)
+                                    <a href="{{route ('home.content',['content'=>$v['id']])}}">
+                                        <dl>
+                                            <dt><img src="{{$v['list_pic']}}" width="50"></dt>
+                                            <dd class="title">{{$v['title']}}</dd>
+                                            <dd class="info">{{$v['description']}}</dd>
+                                            <dd class="price"><i class="yen">￥</i>{{$v['price']}}</dd>
+                                        </dl>
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="slide-point">
+                        <a href="javascript:;" class="curr-point"></a>
+                        <a href="javascript:;"></a>
+                    </div>
+
+                </div>
             </div>
             <!--楼层三-->
             <div class="container" id="floor3">
@@ -177,132 +228,6 @@
             <div class="newproduct" id="newproduct">
                 <div class="part-title">新品速递</div>
                 <ul class="newproduct-list">
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="new-item">
-                            <dl>
-                                <dt><img class="js-lazyload" src="{{asset ('org/home')}}/images/right.png"></dt>
-                                <dd class="title">铁三角（Audio-technica）ATH-CKB50 平衡动铁时尚入耳式耳机</dd>
-                                <dd class="price"><span><i class="yen">￥</i>289</span> 09-18上新</dd>
-                            </dl>
-                        </a>
-                    </li>
                     <li>
                         <a href="" class="new-item">
                             <dl>

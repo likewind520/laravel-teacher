@@ -20,6 +20,7 @@
                     <ul aria-expanded="true" class="collapse">
                         <li><a href="{{route('admin.category.index')}}">栏目管理</a></li>
                         <li><a href="{{route('admin.good.index')}}">商品管理</a></li>
+                        <li><a href="{{route('admin.order.index')}}">订单管理</a></li>
                     </ul>
                 </li>
                 <li class="active">

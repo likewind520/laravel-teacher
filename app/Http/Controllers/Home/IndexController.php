@@ -34,7 +34,21 @@ class IndexController extends CommonController
             'data'=>Good::whereIn('category_id',$sonIds)->get()
         ];
         //dd($oneFloor);
-        return view('home.index.index',compact('categoryData','good','latestGood','oneFloor'));
+        //第二楼数据
+        Category::$temp=[];
+        $sonIds        =$category->getSon( $categories , 15 );
+        $sonIds[]      =15;
+        //dd($sonIds);
+        $twoFloor=[
+            'name'=>'手机/运营商/数码' ,
+            'data'=>Good::whereIn( 'category_id' , $sonIds )->get()
+        ];
+        //新品速递
+        $newGoods=Good::latest()->limit( 15 )->get();
+        return view('home.index.index',compact('categoryData','good','latestGood','oneFloor','newGoods','twoFloor'));
 
+    }
+    public function qqBack(){
+        echo 1;
     }
 }

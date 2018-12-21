@@ -28,10 +28,10 @@ class PayController extends CommonController
             //============生成位置支付二维码==========//
             //1.必须要服务器环境下测试
             //2.框架的时区要设置 PRC
-//            $input=new \WxPayUnifiedOrder();
+            //$input=new \WxPayUnifiedOrder();
+            //dd(hd_config( 'website.site_name' , '黎明之光' ));
             $input=new \WxPayUnifiedOrder();
             $input->SetBody( hd_config( 'website.site_name' , '黎明之光' ) );
-
             $input->SetAttach( $request->query('number') );
             $input->SetOut_trade_no( "sdkphp123456789" . date( "YmdHis" ) );
             $input->SetTotal_fee( intval( '1' ) );
@@ -48,9 +48,9 @@ class PayController extends CommonController
             //dd($notify->GetPayUrl( $input ));
             //dd(1);
             $result=$notify->GetPayUrl($input);
-            //dd('1');
+            //dd($result);
             $url2=$result[ "code_url" ];
-
+            //dd(1);
             return view( 'home.pay.index' , compact( 'order' , 'url2' ) );
         }
     //微信支付之后回调通知
@@ -59,8 +59,9 @@ class PayController extends CommonController
     //******不可以有csrf 令牌验证
     public function notify()
     {
-//        dd(1);
+         //dd(1);
         //接受微信 post 通知我们的数据
+        //下面的是php的语法
         $result=simplexml_load_string( file_get_contents( 'php://input' ) , 'simpleXmlElement' , LIBXML_NOCDATA );
         //将以上微信返回的数据写入文件
         file_put_contents( 'b.php' , var_export( $result , true ) );
