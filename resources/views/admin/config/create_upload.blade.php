@@ -88,9 +88,9 @@
                 , data: {}
                 , headers: {}//接口的请求头。如：headers: {token: 'sasasas'}。注：该参数为 layui 2.2.6 开始新增
                 , accept: 'images' //指定允许上传时校验的文件类型，可选值有：images（图片）、file（所有文件）、video（视频）、audio（音频）
-                , acceptMime: 'image/jpg,image/png'
-                , size: 2000000 //最大允许上传的文件大小，单位 KB。不支持ie8/9
-                , exts: 'jpg|png'
+                , acceptMime: "{{hd_config ('upload.upload_accept_mime','image/jpg, image/png,image/jpeg')}}"
+                , size: "{{hd_config ('upload.upload_size',20000000)}}" //最大允许上传的文件大小，单位 KB。不支持ie8/9
+                , exts: "{{hd_config ('upload.upload_type','jpg|png|gif|bmp|jpeg')}}"
                 //,drag:true //是否接受拖拽的文件上传，设置 false 可禁用。不支持ie8/9
                 //上传成功之后的回调
                 , done: function (res) {
