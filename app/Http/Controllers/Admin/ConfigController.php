@@ -14,7 +14,7 @@ class ConfigController extends Controller
         $config=Config::firstOrNew(
             ['name'=>$name]
         );
-        return view('admin.config.create_'.$name,compact('name','config'));
+        return view('admin.config.edit_'.$name,compact('name','config'));
 
 
     }

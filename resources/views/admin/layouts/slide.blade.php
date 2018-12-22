@@ -28,6 +28,8 @@
                     <ul aria-expanded="true" class="collapse">
                         <li><a href="{{route('admin.config.edit',['name'=>'website'])}}">站点配置</a></li>
                         <li><a href="{{route('admin.config.edit',['name'=>'upload'])}}">上传配置</a></li>
+                        <li><a href="{{route('admin.config.edit',['name'=>'email'])}}">邮件配置</a></li>
+                        <li><a href="{{route('admin.config.edit',['name'=>'search'])}}">搜索配置</a></li>
                     </ul>
                 </li>
 

@@ -4,8 +4,13 @@
 Route::get( '/' , 'Home\IndexController@index');
 Route::group( ['prefix' => 'home' , 'namespace' => 'Home' , 'as' => 'home.'] , function ()
 {
+    ////首页
     Route::get ('/','IndexController@index')->name ('home');
+    //列表页
     Route::get ('list/{list}','ListController@index')->name ('list');
+    //搜索
+    Route::get('search','IndexController@search')->name('search');
+    //商品内容
     Route::get ('content/{content}','ContentController@index')->name ('content');
     //根据规格请求对应的库存
     Route::post ('spec_to_get_total','ContentController@specGetTotal')->name ('spec_to_get_total');

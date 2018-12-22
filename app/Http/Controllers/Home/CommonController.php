@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Models\Category;
+use App\Models\Keyword;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,5 +17,8 @@ class CommonController extends Controller
         $_categories = Category::where('pid',0)->limit(5)->get();
         //\View::share('_categories',$_categories);相当于compact('_categories')
         \View::share('_categories',$_categories);
+        //获取搜索关键词
+        $keywords = Keyword::orderBy('click','desc')->limit(5)->get();
+        \View::share('_keywords',$keywords);
     }
 }

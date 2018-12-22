@@ -26,11 +26,7 @@
     <div class="topbox">
         <div class="main">
             <div class="topleft fl">
-                <a href="javascript:;">欢迎来到冰雨商城</a>
-                <a href="#">设为首页</a>
-                <a href="#">收藏本站</a>
-                <a href="#">帮助中心</a>
-                <a href="#" class='last'><i></i>手机商城</a>
+                <a href="/">欢迎来到{{hd_config('website.site_name')}}</a>
             </div>
             <div class="topright fr">
                 <div class="login fl">
@@ -61,14 +57,14 @@
             </div>
             <div class="seachRegion">
                 <div class="seach fl">
-                    <form action="" method="post">
-                        <input type="text" class="seachtxt fl" value="O2+车载空气净化" />
-                        <input type="submit" class="btn" value="" />
+                    <form action="{{route('home.search')}}">
+                        <input type="text" name="kwd" class="seachtxt fl" value="{{request()->query('kwd')}}" placeholder="搜索..."/>
+                        <button type="submit" class="btn" value=""></button>
                     </form>
                     <p class="searchkey">
-                        <a href="">电竞配件低至5折</a>
-                        <a href="">电竞配件低至5折</a>
-                        <a href="">电竞配件低至5折</a>
+                        @foreach($_keywords as $keyword)
+                            <a href="{{route('home.search',['kwd'=>$keyword['kwd']])}}">{{$keyword['kwd']}}</a>
+                        @endforeach
                     </p>
 
                 </div>

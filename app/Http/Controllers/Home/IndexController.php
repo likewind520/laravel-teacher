@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Models\Category;
 use App\Models\Good;
+use App\Models\Keyword;
 use Houdunwang\Arr\Arr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -47,6 +48,24 @@ class IndexController extends CommonController
         $newGoods=Good::latest()->limit( 15 )->get();
         return view('home.index.index',compact('categoryData','good','latestGood','oneFloor','newGoods','twoFloor'));
 
+    }
+    //搜索 建立数据表和模型
+    public function search( Request $request )
+    {
+        //获取搜索词
+        $kwd=$request->query( 'kwd' );
+        //在数据表中查找当前关键词是否存在
+        $keyword=Keyword::where( 'kwd' , $kwd )->first();
+        if( $keyword ){
+            //如果已经存在,让搜索次数+1
+            $keyword->increment( 'click' );
+        }else{
+            //如果搜索词不存在,进行添加
+            Keyword::create( [ 'kwd'=>$kwd ] );
+        }
+        $goods=Good::search( $kwd )->paginate( 10 );
+
+        return view( 'home.index.search' , compact( 'goods' , 'kwd' ) );
     }
     public function qqBack(){
         echo 1;
