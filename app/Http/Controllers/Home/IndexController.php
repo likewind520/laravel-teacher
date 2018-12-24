@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 class IndexController extends CommonController
 {
     public function index(Category $category){
-        //dd(1);
+       //dd(1);
         //获得所有栏目的数据
         $categories=Category::all()->toArray();
         //dd($categories);

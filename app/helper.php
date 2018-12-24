@@ -1,5 +1,6 @@
 <?php
 //助手函数
+//dd(1);
 if (!function_exists('hd_config')){
     //帮助读取后台配置项数据
     function hd_config($var,$default=''){
@@ -20,5 +21,24 @@ if (!function_exists('hd_config')){
         }
         //isset($cache[$info[0]][$info[1]])?$cache[$info[0]][$info[1]]:''
         return $cache[$info[0]][$info[1]]??$default;
+    }
+}
+//公共地方, 在任何地方调用权限认证
+if( !function_exists( 'admin_has_permission' ) ){
+    function admin_has_permission( $permission )
+    {
+        //hasAnyPermission 多个权限当中的一个
+        if( is_array( $permission ) ){
+            if( !auth( 'admin' )->user()->hasAnyPermission( $permission ) ){
+                throw new \App\Exceptions\PermissionException('不准进去');
+            }
+        }
+        //dd(auth( 'admin' )->user()->hasPermissionTo( $permission ));
+        if( is_string( $permission ) ){
+            if( !auth( 'admin' )->user()->hasPermissionTo( $permission ) ){
+                throw new \App\Exceptions\PermissionException('不准进去' );
+            }
+        }
+
     }
 }

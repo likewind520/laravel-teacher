@@ -70,6 +70,18 @@ Route::group(['middleware' => ['admin.auth'],'prefix' => 'admin', 'namespace' =>
     //配置项管理
     Route::get('config/edit/{name}','ConfigController@edit')->name('config.edit');
     Route::post('config/update/{name}','ConfigController@update')->name('config.update');
+    //管理员管理
+    Route::resource('admin','AdminController');
+    Route::get( 'admin_set_role_create/{admin}' , 'AdminController@adminSetRoleCreate' )->name( 'admin_set_role_create' );
+    Route::post( 'admin_set_role_store/{admin}' , 'AdminController@adminSetRoleStore' )->name( 'admin_set_role_store' );
+    //角色管理
+    Route::resource('role','RoleController');
+    //给角色设置权限
+    Route::post( 'set_role_permission/{role}' , 'RoleController@setRolePermission' )->name( 'set_role_permission' );
+    //权限管理
+    Route::get( 'permission' , 'PermissionController@index' )->name( 'permission' );
+//    清除权限缓存
+    Route::get( 'forget_permission_cache' , 'PermissionController@forgetPermissionCache' )->name( 'forget_permission_cache' );
     //订单管理
     Route::resource('order','OrderController');
 });

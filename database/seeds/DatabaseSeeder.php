@@ -14,5 +14,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         //注册管理员种子
         $this->call(AdminTableSeeder::class);
+        //注册站长种子
+        $this->call(RoleTableSeeder::class);
     }
 }
