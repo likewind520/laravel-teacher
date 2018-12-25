@@ -126,6 +126,7 @@
                         </div>
 
                         <div class="col-6" id="app">
+                            {{--@{{specs}}--}}
                             <div class="card" v-for="(v,k) in specs">
                                 <div class="card-body">
                                     <div class="form-group row">
@@ -135,6 +136,7 @@
                                                    class="form-control">
                                         </div>
                                     </div>
+
                                     <div class="form-group row">
                                         <label class="control-label text-right col-md-3">库存</label>
                                         <div class="col-md-9">
@@ -167,8 +169,8 @@
                     </div>
                 </form>
             </div>
-        </div>
 
+        </div>
     </div>
 @endsection
 @push('css')
@@ -255,7 +257,7 @@
         new Vue({
             el: '#app',
             data: {
-                specs:{!! $good->spec !!}
+                specs: {!!  old ('specs')?:json_encode ($good->spec,true) !!}
             },
             methods: {
                 add () {

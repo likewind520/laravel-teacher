@@ -89,10 +89,9 @@
                     <li class="menulist">
                         <a href="{{route ('home.list',['list'=>$category['id']])}}">{{$category['name']}}</a>
                         @if($category->good->count() != 0)
-
                             <div class="menuHiden">
                                 <ul class="product">
-                                    @foreach($category->good as $good)
+                                    @foreach($category->good()->limit(6)->get() as $good)
                                         <li>
                                             <a href="{{route ('home.content',['content'=>$good['id']])}}">
                                                 <img src="{{$good->list_pic}}" alt=""/>
@@ -238,9 +237,10 @@
     </ul>
 
 </div>
+@stack('js')
 @include('layouts.message')
 <!--左侧楼层结束-->
-@stack('js')
+
 </body>
 
 </html>

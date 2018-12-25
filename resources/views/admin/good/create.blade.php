@@ -239,9 +239,8 @@
         new Vue({
             el:'#app',
             data:{
-                specs:[
+                specs: {!!  old ('specs')?:'[]' !!}
 
-                ]
             },
             methods:{
                 add(){

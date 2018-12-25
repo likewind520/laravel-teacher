@@ -29,7 +29,7 @@
                                 <a href=""><img :src="v.pic"></a>
                             </div>
                             <p>
-                                <a href="#">@{{v.title}}</a>
+                                <a href="">@{{v.title}}</a>
                                 </br>
                                 <span>@{{v.spec}}</span>
                             </p>
@@ -72,8 +72,8 @@
 
 @push('js')
     <script src="{{asset ('org/home')}}/js/list.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.min.js"></script>
-    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+    <script src="{{asset ('org/home')}}/js/vuemin.js"></script>
+    <script src="{{asset ('org/home')}}/js/axiosmin.js"></script>
     <script src="{{asset ('org/layer/layer.js')}}"></script>
     <script>
         new Vue({

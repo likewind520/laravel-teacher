@@ -59,9 +59,10 @@
                                         <td>{{$admin->created_at}}</td>
                                         <td>
                                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-
+                                                @if($admin['id']!=1)
                                                 <a href="{{route('admin.admin_set_role_create',$admin)}}" class="btn btn-secondary">设置权限</a>
                                                 <a href="{{route ('admin.admin.edit',$admin)}}" class="btn btn-secondary">编辑</a>
+                                                @endif
                                                 @can('delete',$admin)
                                                     <a href="javascript:;" onclick="del(this)" class="btn btn-secondary">
                                                         删除
