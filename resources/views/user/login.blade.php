@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>用户注册</title>
+    <title>用户登录</title>
     <!-- Favicon icon -->
     <link href="{{asset('org/assets/')}}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -48,7 +48,7 @@
 
                 <div class="form-group m-t-40">
                     <div class="col-xs-12">
-                        <input class="form-control" type="email" name="email" value="{{old ('email')}}" required placeholder="Email">
+                        <input class="form-control" type="text" name="account" value="{{old ('account')}}" required placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -26,7 +27,21 @@ class UserRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'email'=>'email|unique:users',
+            //既要验证手机也要验证邮箱
+            'account'    => [
+                'required',
+                function ( $attribute , $value , $fail )
+                {
+                    if(filter_var($value,FILTER_VALIDATE_EMAIL)){
+                        $user = User::where('email',$value)->first();
+                    }else{
+                        $user = User::where('mobile',$value)->first();
+                    }
+                    if($user){
+                        return $fail( '该账号已存在' );
+                    }
+                } ,
+            ] ,
             'password'=>'required|min:3|confirmed',
             'code'=>[
                 'required',
@@ -44,8 +59,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name.required'     =>'请输入昵称' ,
-            'email.email'       =>'请输入正确邮箱' ,
-            'email.unique'      =>'该邮箱已注册' ,
+            'account.required'  => '请输入注册邮箱' ,
             'password.required' =>'请输入密码' ,
             'password.min'      =>'密码不得少于3位' ,
             'password.confirmed'=>'两次输入密码不一致' ,

@@ -135,10 +135,20 @@ class UserController extends CommonController
         $data = $request->all();
         //dd($data);
         $data['password'] = bcrypt($data['password']);
-        // $data[ 'name' ]    =$data[ 'name' ] ? : '';//给每个用户昵称,因为数据表设置 name 不允许为空所以需要给出默认值
+//        $data[ 'name' ]    =$data[ 'name' ] ? : '';//给每个用户昵称,因为数据表设置 name 不允许为空所以需要给出默认值
         $data['token'] = str_random(50);//给每个注册用户随机一个字符串
         //修改数据表中 email_verified_at 字段
-        $data['email_verified_at'] = now();//now()函数获取当前时间
+        //filter_var($data['account'],FILTER_VALIDATE_EMAIL)检测变量中的account是不是邮箱
+        //account是前台发过来的(邮箱或是手机)数据,
+        if(filter_var($data['account'],FILTER_VALIDATE_EMAIL)){
+            //修改数据表中 email_verified_at 字段
+            $data[ 'email_verified_at' ]=now();//now()函数获取当前时间
+            $data['email'] = $data['account'];
+        }else{
+            $data[ 'mobile_verified_at' ]=now();//now()函数获取当前时间
+            $data['mobile'] = $data['account'];
+
+        }
         $user = User::create($data);
         //写入数据成功之后修改用户默认昵称,默认值设置为:超人 n 号,这个默认值给什么自行定义
         //$user->name='黎明' . $user[ 'id' ] . '号';

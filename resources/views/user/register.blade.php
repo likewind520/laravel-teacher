@@ -69,7 +69,7 @@
                 </div>
                 <div class="form-group ">
                     <div class="col-xs-12">
-                        <input class="form-control" type="email" name="email" required value="" placeholder="Email">
+                        <input class="form-control" type="text" name="account" required value="{{old ('account')}}" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group ">
@@ -137,11 +137,12 @@
         //点击发送验证码时候,如果是禁止状态,name 不执行事件
         if ($(obj).is('.layui-disabled')) return false;
         //获取收件邮箱
-        let email = $('input[name=email]').val();
+        let account = $('input[name=account]').val();
         //检测验证码格式是否为邮箱格式
-        if (!/.+@.+/.test(email)) {
+        if (/.+@.+/.test(account) || /^[0-9]{11}$/.test(account)) {
+        }else {
             swal({
-                text: '请输入正确的邮箱',
+                text: '邮箱或手机号格式有误',
                 icon: "warning",
                 button: false
             });
@@ -176,16 +177,22 @@
             type: 'post',//请求方式
             dataType: 'json',//返回的数据类型
             data: {//请求数据
-                email: email
+                account: account
             },
 
             //请求成功回调
             success: function (response) {
                 //console.log(response);
-                if (response.code==1){
+                if(response.code==1){
                     swal({
                         text: response.message,
                         icon: "success",
+                        button: false
+                    });
+                }else{
+                    swal({
+                        text: response.message,
+                        icon: "warning",
                         button: false
                     });
                 }
