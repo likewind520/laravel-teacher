@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Home\CommonController;
+use App\Http\Requests\HomeLoginRequest;
 use App\Http\Requests\PasswordResetRequest;
 use App\Http\Requests\PersonalRequest;
 use App\Http\Requests\UserRequest;
@@ -27,31 +28,22 @@ class UserController extends CommonController
     }
 
 //    登录提交
-    public function loginFrom(Request $request)
+    public function loginFrom(HomeLoginRequest $request)
     {
         //dd($request->toArray());
-        //自定义验证规则
-        $this->validate(
-            $request,
-            [
-                //邮箱类型和密码不能为空以及至少需要三位
-                'email' => 'email',
-                'password' => 'required|min:3',
-
-            ],
-            [
-                //把默认的英文提示信息改为中文
-                'email.email' => '请输入邮箱',
-                'password.required' => '请输入登录密码',
-                'password.min' => '密码不得小于三位',
-            ]
-        );
         //执行登录
-        $validate = $request->only('email', 'password');
+        //$data自己写的,也可以写成$da 任意,
+        if(filter_var($request['account'],FILTER_VALIDATE_EMAIL)){
+            $data['email'] = $request['account'];
+        }else{
+            $data['mobile'] = $request['account'];
+        }
+        $data['password'] = $request['password'];
+        //记住我
         $remember = $request->remember;
         //dd($remember);
         //\Auth::attempt()框架中自带的自动验证系统
-        if (\Auth::attempt($validate, $remember)) {
+        if (\Auth::attempt($data, $remember)) {
             //如果登录页面地址栏接收到from参数，
             if ($request->from) {
                 return redirect($request->from)->with('success', '登录成功');

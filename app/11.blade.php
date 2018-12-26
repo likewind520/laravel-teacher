@@ -111,7 +111,6 @@
                 <a href="{{route ('home.list',['list'=>14])}}" target="_blank" class="indexmore">更多</a>
             </div>
             <div class="container">
-
                 <div class="part-center" style="width: 990px">
                     <ul>
                         <?php $i = 0;?>
@@ -137,7 +136,7 @@
                             <?php $i = 0;?>
                             @foreach($oneFloor['data'] as $v)
                                 <?php $i++;?>
-                                @if($i>8 and $i<14)
+                                @if($i>=3 and $i<7)
                                     <a href="{{route ('home.content',['content'=>$v['id']])}}">
                                         <dl>
                                             <dt><img src="{{$v['list_pic']}}" width="50"></dt>
@@ -186,7 +185,7 @@
                             <?php $i = 0;?>
                             @foreach($twoFloor['data'] as $v)
                                 <?php $i++;?>
-                                @if($i>8 and $i<14)
+                                @if($i>=3 and $i<7)
                                     <a href="{{route ('home.content',['content'=>$v['id']])}}">
                                         <dl>
                                             <dt><img src="{{$v['list_pic']}}" width="50"></dt>
@@ -201,46 +200,53 @@
 
                     </div>
                 </div>
-            </div>
-            <!--楼层三-->
-            <div class="container" id="floor3">
-            </div>
-            <!--楼层四-->
-            <div class="container" id="floor4"></div>
-            <!--新品速递-->
-            <br>
-            <div class="hot" id="hot">
-                <h5 class="hline">
-                    <span class="vline"></span>
-                    <span class="tiao"></span>
-                    <span class="zi">新品速递</span>
-                    <span class="tiao"></span>
-                    <span class="vline"></span></h5>
-            </div>
-            <br>
-            <div class="newproduct" id="newproduct">
-                {{--<div class="part-title">新品速递</div>--}}
-                <ul class="newproduct-list">
-                    @foreach($newGoods as $v)
-                        <li>
-                            <a href="{{route ('home.content',['content'=>$v['id']])}}" class="new-item">
-                                <dl>
-                                    <dt><img class="js-lazyload" src="{{$v['list_pic']}}"></dt>
-                                    <dd class="title">{{$v['title']}}</dd>
-                                    <dd class="price"><span><i class="yen">￥</i>{{$v['price']}}</span> {{$v->created_at->format('m-d')}}上新</dd>
-                                </dl>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-                <div class="nomore" style="display: block;"></div>
+
+                <!--楼层三-->
+                <div class="container" id="floor3">
+                </div>
+                <!--楼层四-->
+                <div class="container" id="floor4"></div>
+                <!--新品速递-->
+                <br>
+                <div class="hot" id="hot">
+                    <h5 class="hline">
+                        <span class="vline"></span>
+                        <span class="tiao"></span>
+                        <span class="zi">新品速递</span>
+                        <span class="tiao"></span>
+                        <span class="vline"></span></h5>
+                </div>
+                <br>
+                <div class="container" style="width: 1440px">
+                    {{--<div class="part-center" style="width: 1440px">--}}
+                    <div class="newproduct" id="newproduct" >
+                        {{--<div class="part-title">新品速递</div>--}}
+                        <ul class="newproduct-list">
+                            <?php $i = 0;?>
+                            @foreach($newGoods as $v)
+                                <?php $i++;?>
+                                @if($i<11)
+                                    <li>
+                                        <a href="{{route ('home.content',['content'=>$v['id']])}}" class="new-item">
+                                            <dl>
+                                                <dt><img class="js-lazyload" src="{{$v['list_pic']}}"></dt>
+                                                <dd class="title">{{$v['title']}}</dd>
+                                                <dd class="price"><span><i class="yen">￥</i>{{$v['price']}}</span> {{$v->created_at->format('m-d')}}上新</dd>
+                                            </dl>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                        <div class="nomore" style="display: block;"></div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-@endsection
-@push('css')
-    <link rel="stylesheet" type="text/css" href="{{asset ('org/home')}}/css/index.css"/>
-@endpush
-@push('js')
-    <script src="{{asset ('org/home')}}/js/index.js" type="text/javascript" charset="utf-8"></script>
-@endpush
+        @endsection
+        @push('css')
+            <link rel="stylesheet" type="text/css" href="{{asset ('org/home')}}/css/index.css"/>
+        @endpush
+        @push('js')
+            <script src="{{asset ('org/home')}}/js/index.js" type="text/javascript" charset="utf-8"></script>
+    @endpush

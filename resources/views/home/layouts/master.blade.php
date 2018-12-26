@@ -119,89 +119,89 @@
 @yield('content')
 <!--中间结束-->
 <!--尾部开始-->
-<div class="mod-footer">
-    <div class="foot-bannerw">
-        <div class="foot-banner clearfix">
-            <div class="banner-item">
-                <a href="#" target="_blank" data-monitor="home_foot_days7"><i class="icon1">7</i>7天无理由退货</a>
-            </div>
-            <div class="banner-item">
-                <a href="#" target="_blank" data-monitor="home_foot_days15"><i class="icon2">15</i>15天免费换货</a>
-            </div>
-            <div class="banner-item"><i class="icon3">包</i>满99元包邮</div>
-            <div class="banner-item">
-                <a href="#" target="_blank" data-monitor="home_foot_moblie"><i class="icon4">服</i>手机特色服务</a>
-            </div>
-        </div>
-    </div>
-    <div class="foot-containerw">
-        <div class="foot-container clearfix">
-            <dl class="foot-con"> <dt data-monitor="home_foot_freshman">帮助中心 </dt>
-                <dd data-monitor="home_help_freshman">
-                    <a target="_blank" href="#" rel="nofollow">用户注册</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">用户登录与密码找回</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">购买指南</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">支付方式</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">配送与说明</a>
-                </dd>
-            </dl>
-            <dl class="foot-con"> <dt data-monitor="home_foot_help">售后服务 </dt>
-                <dd data-monitor="home_help_help">
-                    <a target="_blank" href="#">7 日无理由退货</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">质量问题 15 日内换货</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">保修条款</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">服务流程</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">安迷之家</a>
-                </dd>
-            </dl>
-            <dl class="foot-con"> <dt data-monitor="home_foot_guide">特色服务 </dt>
-                <dd data-monitor="home_help_guide">
-                    <a target="_blank" href="#" rel="nofollow">F码通道</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">免费试用</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">360 生态</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">一元夺宝</a>
-                </dd>
-            </dl>
-            <dl class="foot-con"> <dt data-monitor="home_foot_tuiguang">推广合作 </dt>
-                <dd data-monitor="home_help_try">
-                    <a target="_blank" href="#" rel="nofollow">商品入驻</a>
-                </dd>
-                <dd>
-                    <a target="_blank" href="#" rel="nofollow">大客户采购</a>
-                </dd>
-            </dl>
-            <dl class="foot-con"> <dt data-monitor="home_foot_try">关注360商城 </dt>
-                <dd data-monitor="home_help_try">
-                    <a target="_blank" href="#" rel="nofollow">360商城大事记</a>
-                </dd>
-            </dl>
+{{--<div class="mod-footer">--}}
+    {{--<div class="foot-bannerw">--}}
+        {{--<div class="foot-banner clearfix">--}}
+            {{--<div class="banner-item">--}}
+                {{--<a href="#" target="_blank" data-monitor="home_foot_days7"><i class="icon1">7</i>7天无理由退货</a>--}}
+            {{--</div>--}}
+            {{--<div class="banner-item">--}}
+                {{--<a href="#" target="_blank" data-monitor="home_foot_days15"><i class="icon2">15</i>15天免费换货</a>--}}
+            {{--</div>--}}
+            {{--<div class="banner-item"><i class="icon3">包</i>满99元包邮</div>--}}
+            {{--<div class="banner-item">--}}
+                {{--<a href="#" target="_blank" data-monitor="home_foot_moblie"><i class="icon4">服</i>手机特色服务</a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="foot-containerw">--}}
+        {{--<div class="foot-container clearfix">--}}
+            {{--<dl class="foot-con"> <dt data-monitor="home_foot_freshman">帮助中心 </dt>--}}
+                {{--<dd data-monitor="home_help_freshman">--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">用户注册</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">用户登录与密码找回</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">购买指南</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">支付方式</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">配送与说明</a>--}}
+                {{--</dd>--}}
+            {{--</dl>--}}
+            {{--<dl class="foot-con"> <dt data-monitor="home_foot_help">售后服务 </dt>--}}
+                {{--<dd data-monitor="home_help_help">--}}
+                    {{--<a target="_blank" href="#">7 日无理由退货</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">质量问题 15 日内换货</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">保修条款</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">服务流程</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">安迷之家</a>--}}
+                {{--</dd>--}}
+            {{--</dl>--}}
+            {{--<dl class="foot-con"> <dt data-monitor="home_foot_guide">特色服务 </dt>--}}
+                {{--<dd data-monitor="home_help_guide">--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">F码通道</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">免费试用</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">360 生态</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">一元夺宝</a>--}}
+                {{--</dd>--}}
+            {{--</dl>--}}
+            {{--<dl class="foot-con"> <dt data-monitor="home_foot_tuiguang">推广合作 </dt>--}}
+                {{--<dd data-monitor="home_help_try">--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">商品入驻</a>--}}
+                {{--</dd>--}}
+                {{--<dd>--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">大客户采购</a>--}}
+                {{--</dd>--}}
+            {{--</dl>--}}
+            {{--<dl class="foot-con"> <dt data-monitor="home_foot_try">关注360商城 </dt>--}}
+                {{--<dd data-monitor="home_help_try">--}}
+                    {{--<a target="_blank" href="#" rel="nofollow">360商城大事记</a>--}}
+                {{--</dd>--}}
+            {{--</dl>--}}
 
-        </div>
-    </div>
-    <div class="footer-copyright">冰雨商城 ©2016-2018 BYCMS工作室版权所有 京ICP备000001号-43</div>
-</div>
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="footer-copyright">冰雨商城 ©2016-2018 BYCMS工作室版权所有 京ICP备000001号-43</div>--}}
+{{--</div>--}}
 <!--尾部结束-->
 
 <!--右边底部返回顶部-->
