@@ -7,7 +7,8 @@
                 <div class="orderlist">
                     <h2>我的个人信息</h2>
                     <div style="padding: 30px">
-                        <form class="layui-form" action="">
+                        <form class="layui-form" action="{{route('user.update',auth()->user())}}" method="post">
+                            @csrf @method('PUT')
                             <div class="layui-form-item">
                                 <label class="layui-form-label">用户昵称</label>
                                 <div class="layui-input-block">
@@ -17,24 +18,21 @@
                             <div class="layui-form-item" id="distpicker">
                                 <label class="layui-form-label">选择地址</label>
                                 <div class="layui-input-inline">
-                                    <select name="quiz1" lay-filter="a" id="a"></select>
+                                    <select name="province" lay-filter="a" id="a"></select>
                                 </div>
                                 <div class="layui-input-inline">
-                                    <select name="quiz2" lay-filter="b" id="b"></select>
+                                    <select name="city" lay-filter="b" id="b"></select>
                                 </div>
                                 <div class="layui-input-inline">
-                                    <select name="quiz3" lay-filter="c" id="c"></select>
+                                    <select name="district" lay-filter="c" id="c"></select>
                                 </div>
                             </div>
-                            {{--<div class="layui-form-item">--}}
-                                {{--<label class="layui-form-label">用户头像</label>--}}
-                                {{--<div class="layui-input-block">--}}
-                                    {{--<div class="layui-inline">--}}
-                                        {{--<img src="https://cdn.layui.com/avatar/168.jpg?t=1490352249902" class="layui-circle">--}}
-                                    {{--</div>--}}
-                                    {{--<input type="text" name="icon" value="" hidden>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+                            <div class="layui-form-item layui-form-text">
+                                <label class="layui-form-label">详细地址</label>
+                                <div class="layui-input-block">
+                                    <textarea placeholder="" name="detail" value="{{auth()->user()->detail}}" class="layui-textarea">{{auth()->user()->detail}}</textarea>
+                                </div>
+                            </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">用户邮箱</label>
                                 <div class="layui-input-block">
@@ -45,18 +43,16 @@
                                 <div class="layui-inline">
                                     <label class="layui-form-label">手机号</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" name="phone" class="layui-input">
+                                        <input type="text" name="phone" value="{{auth()->user()->mobile}}" class="layui-input">
                                     </div>
                                 </div>
                                 <div class="layui-inline">
                                     <label class="layui-form-label">请选择生日</label>
                                     <div class="layui-input-inline">
-                                        <input type="text" name="birthday" id="date" placeholder="yyyy-MM-dd" class="layui-input">
+                                        <input type="text" name="birthday" value="{{auth()->user()->birthday}}" id="date" placeholder="yyyy-MM-dd" class="layui-input">
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="layui-form-item">
                                 <label class="layui-form-label">性别</label>
                                 <div class="layui-input-block">
@@ -91,9 +87,9 @@
     <script>
         //城市联动
         $("#distpicker").distpicker({
-            province: '湖北省',
-            city: '天门市',
-            district: '竟陵街道'
+            province: "{{auth()->user()->province?:'湖北省'}}",
+            city: '{{auth()->user()->city?:'天门市'}}',
+            district: '{{auth()->user()->district?:'竟陵街道'}}'
         });
         layui.use(['form', 'layedit', 'laydate'], function () {
             var form = layui.form

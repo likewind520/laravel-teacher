@@ -19,7 +19,8 @@
         "laravel/framework": "5.7.*",
         "laravel/scout": "^5.0",
         "laravel/tinker": "^1.0",
-        "spatie/laravel-permission": "^2.29"
+        "spatie/laravel-permission": "^2.29",
+        "qcloudsms/qcloudsms_php": "0.1.*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

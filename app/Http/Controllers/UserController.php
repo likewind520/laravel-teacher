@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Home\CommonController;
 use App\Http\Requests\PasswordResetRequest;
+use App\Http\Requests\PersonalRequest;
 use App\Http\Requests\UserRequest;
 use App\Notifications\ResetPasswordNotify;
 use App\User;
@@ -253,9 +254,12 @@ class UserController extends CommonController
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(PersonalRequest $request, User $user)
     {
-        //
+        //dd($request->toArray());
+        $user->update($request->all());
+        return back()->with( 'success' , '操作成功' );
+
     }
 
     /**

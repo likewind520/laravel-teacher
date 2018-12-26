@@ -7,6 +7,20 @@
             <li class="{{ active_class(if_route('home.address.index') || if_route('home.address.create') || if_route('home.address.edit'),'personalCenter_active','') }}"><a href="{{route('home.address.index')}}">管理地址<span>&gt;</span></a></li>
         </ul>
     </div>
+    {{--<br>--}}
+    {{--<div style="height: 20px;background: #f5f5f5"></div>--}}
+    {{--<div class="ordertitle">--}}
+        {{--<h1 style="background: white;color: black;font-weight: 700;border-bottom: 1px dashed #cccccc">头像</h1>--}}
+        {{--<div style="margin: 10px 5px auto;text-align: center;cursor: pointer">--}}
+            {{--<img id="user_icon" src="" width="118" class="layui-circle">--}}
+            {{--<form action=""  method="post" id="editCicon">--}}
+                {{--@csrf @method('PUT')--}}
+                {{--<input type="hidden" name="icon" value="">--}}
+            {{--</form>--}}
+        {{--</div>--}}
+        {{--<p style="text-align: center;padding-top: 10px;padding-bottom: 10px"></p>--}}
+    {{--</div>--}}
+{{--</div>--}}
 </div>
 <style>
     .personalCenter_active {

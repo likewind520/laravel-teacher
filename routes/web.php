@@ -49,6 +49,8 @@ Route::get ( 'reset_password/{token}' , 'UserController@resetPasswordView' )->na
 Route::post ( 'reset_password/{token}' , 'UserController@resetPassword' )->name ( 'reset_password_post' );
 //注销登录
 Route::get('/logout','UserController@logout')->name('logout');
+//个人信息
+Route::resource('user','UserController');
 
 
 //后台不需要登录拦截
