@@ -88,6 +88,9 @@
             <div class="con"  style="width: 1240px;margin: 0 auto;margin-bottom: 30px">
                 {!! $content['content'] !!}
             </div>
+            <div class="nomore" style="display: block;" ></div>
+            <div class="footer-copyright" style="text-align: center">{{hd_config ('website.site_name','黎明之光')}} ©2016-2018
+                BYCMS工作室版权所有 {{hd_config ('website.site_icp')}}</div>
         </div>
     </div>
 @endsection

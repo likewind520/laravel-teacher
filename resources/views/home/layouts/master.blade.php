@@ -53,7 +53,7 @@
     <div class="logoRegion">
         <div class="main">
             <div class="logo">
-                <a href=""><img src="{{asset ('org/home')}}/images//360logo.png"/></a>
+                <a href="/"><img src="{{asset ('org/home')}}/images//360logo.png"/></a>
             </div>
             <div class="seachRegion">
                 <div class="seach fl">
@@ -66,17 +66,64 @@
                             <a href="{{route('home.search',['kwd'=>$keyword['kwd']])}}">{{$keyword['kwd']}}</a>
                         @endforeach
                     </p>
-
                 </div>
+                <?php
+                $_carts=\App\Models\Cart::where('user_id',auth()->id())->latest()->limit(4)->get();
+                ?>
                 <div class="topshopcart fr">
-                    <a href="{{route('home.cart.index')}}" class="header-cart"><i></i>我的购物车<span class="cart-size">(0)</span></a>
+                    <a href="{{route('home.cart.index')}}" class="header-cart">
+                        <i></i>
+                        我的购物车
+                        @auth()
+                            <span class="cart-size">({{\App\Models\Cart::where('user_id',auth()->id())->count()}})</span></a>
+                    @else
+                        <span class="cart-size">({{\App\Models\Cart::where('user_id',auth()->id())->count()}})</span></a>
+                    @endauth
+                    @auth()
+                        <div class="cart-tips" style="overflow: hidden;height: auto">
+                            <ul style="overflow: hidden;padding: 10px;">
+                                @foreach($_carts as $cart)
+                                    <li>
+                                        <div style="background: white;overflow: hidden">
+                                            <div class="gc1" style="overflow: hidden">
+                                                <p style="float: left">
+                                                <img style="width: 80px" src="{{$cart['pic']}}"/>
+                                                </p>
+                                                <p style="float: left ;width: 200px;word-break: break-all; text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;overflow: hidden;-webkit-line-clamp: 1;">{{$cart['title']}}</p>
+                                                <p style="float: left ; color: red; width: 80px;word-break: break-all; text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;overflow: hidden;-webkit-line-clamp: 1;">¥ {{$cart['price']}}元</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @else
                     <div class="cart-tips">
                         请
-                        <a href="">登录</a>后查看您的购物车。
+                        <a href="{{route ('login',['from'=>url ()->full()])}}"><span style="color: #0b67cd">登录</span></a>后查看您的购物车。
                     </div>
+                    @endauth
                 </div>
             </div>
 
+            {{--购物车 网上教程示例--}}
+            {{--<style>--}}
+            {{--#testDIV{--}}
+            {{--border:1px solid #ddd;--}}
+            {{--width: 100px;--}}
+            {{--word-break: break-all;--}}
+            {{--text-overflow: ellipsis;--}}
+            {{--display: -webkit-box; /** 将对象作为伸缩盒子模型显示 **/--}}
+            {{---webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/--}}
+            {{---webkit-line-clamp: 3; /** 显示的行数 **/--}}
+            {{--overflow: hidden;  /** 隐藏超出的内容 **/--}}
+            {{--}--}}
+            {{--</style>--}}
+
+            {{--<div id="testDIV" >--}}
+             {{--点击啦啦啦啦啦了绿绿绿啦啦啦啦啦了绿绿的哈哈哈哈哈jk道具哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈--}}
+         {{--</div>--}}
+            {{--购物车 网上教程示例--}}
         </div>
     </div>
     <!--logo区域结束-->
@@ -214,29 +261,29 @@
 </div>
 <!--右边底部返回顶部结束-->
 <!--左侧楼层开始-->
-<div class="floor">
-    <ul>
-        <li class="on1">
-            <a href="javascript:;"><span>1F<br />活动</span></a>
-        </li>
-        <li class="on2">
-            <a href="javascript:;"><span>2F<br />活动</span></a>
-        </li>
-        <li class="on3">
-            <a href="javascript:;"><span>3F<br />活动</span></a>
-        </li>
-        <li class="on4">
-            <a href="javascript:;"><span>4F<br />活动</span></a>
-        </li>
-        <li class="on5">
-            <a href="javascript:;"><span>5F<br />活动</span></a>
-        </li>
-        <li class="on6">
-            <a href="javascript:;"><span>6F<br />活动</span></a>
-        </li>
-    </ul>
+{{--<div class="floor">--}}
+    {{--<ul>--}}
+        {{--<li class="on1">--}}
+            {{--<a href="javascript:;"><span>1F<br />活动</span></a>--}}
+        {{--</li>--}}
+        {{--<li class="on2">--}}
+            {{--<a href="javascript:;"><span>2F<br />活动</span></a>--}}
+        {{--</li>--}}
+        {{--<li class="on3">--}}
+            {{--<a href="javascript:;"><span>3F<br />活动</span></a>--}}
+        {{--</li>--}}
+        {{--<li class="on4">--}}
+            {{--<a href="javascript:;"><span>4F<br />活动</span></a>--}}
+        {{--</li>--}}
+        {{--<li class="on5">--}}
+            {{--<a href="javascript:;"><span>5F<br />活动</span></a>--}}
+        {{--</li>--}}
+        {{--<li class="on6">--}}
+            {{--<a href="javascript:;"><span>6F<br />活动</span></a>--}}
+        {{--</li>--}}
+    {{--</ul>--}}
+{{--</div>--}}
 
-</div>
 @stack('js')
 @include('layouts.message')
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Keyword;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -20,5 +22,10 @@ class CommonController extends Controller
         //获取搜索关键词
         $keywords = Keyword::orderBy('click','desc')->limit(5)->get();
         \View::share('_keywords',$keywords);
+        //获得所有加入购物车的数据
+//        $carts=Cart::where('user_id',auth()->id())->limit(3)->get();
+//        $carts=Cart::all();
+//       //dd($carts->toArray());
+//        \View::share('_carts',$carts);
     }
 }
