@@ -10,6 +10,7 @@ use App\Http\Requests\UserRequest;
 use App\Notifications\ResetPasswordNotify;
 use App\User;
 use Illuminate\Http\Request;
+require_once public_path(''). "/org/Connect2.1/API/qqConnectAPI.php";
 
 class UserController extends CommonController
 {
@@ -55,6 +56,13 @@ class UserController extends CommonController
 
         //登录失败返回
         return redirect()->back()->with('danger', '账户或密码不正确');
+    }
+    public function qq_login(){
+
+        //dd(1);
+        $qc = new \QC();
+        $qc->qq_login();
+
     }
     //重置密码 用另外发邮箱连接的方式更改密码,不需要发送验证码
 //    public function password_reset()

@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Home;
 use App\Models\Category;
 use App\Models\Good;
 use App\Models\Keyword;
+use App\User;
 use Houdunwang\Arr\Arr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+require_once public_path('') . "/org/Connect2.1/API/qqConnectAPI.php";
 class IndexController extends CommonController
 {
     public function index(Category $category){
@@ -67,7 +68,29 @@ class IndexController extends CommonController
 
         return view( 'home.index.search' , compact( 'goods' , 'kwd' ) );
     }
-    public function qqBack(){
-        echo 1;
+    public function qqBack(Request $request){
+//        echo 1;
+        if ($request->code && $request->state){
+            $qc = new \QC();
+            $access_token = $qc->qq_callback();
+            $openid = $qc->get_openid();
+            $qc = new \QC($access_token, $openid);
+            $userInfo = $qc->get_user_info();
+            //dd($userInfo); 获取到用户信息,并把信息储存到数据库
+            $user = User::where('open_id',$openid)->first();
+            if(!$user){
+                $user = new User();
+                $user->open_id = $openid;
+                $user->name = $userInfo['nickname'];
+                $user->icon = $userInfo['figureurl_qq_2'];
+                $user->save();
+            }
+            //执行登录
+            auth()->login($user);
+            //跳转
+            return redirect('/');
+        }
+
+
     }
 }

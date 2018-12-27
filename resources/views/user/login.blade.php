@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
                         <div class="social">
-                            <a href="" class="btn  btn-facebook" data-toggle="tooltip"  title="Login with QQ">
+                            <a href="{{route('qq_login')}}" class="btn  btn-facebook" data-toggle="tooltip"  title="Login with QQ">
                                 <i aria-hidden="true" class="fa fa-qq"></i>
                             </a>
                         </div>

@@ -37,6 +37,7 @@ Route::group( ['prefix' => 'home' , 'namespace' => 'Home' , 'as' => 'home.'] , f
 //登录
 Route::get('/login','UserController@login')->name('login');
 Route::post('/login','UserController@loginFrom')->name('login');
+Route::get('qq_login','UserController@qq_login')->name('qq_login');
 //注册
 Route::get('/register','UserController@register')->name('register');
 Route::post('/register','UserController@store')->name('register');
