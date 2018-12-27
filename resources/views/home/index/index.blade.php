@@ -137,7 +137,7 @@
                             <?php $i = 0;?>
                             @foreach($oneFloor['data'] as $v)
                                 <?php $i++;?>
-                                @if($i>8 and $i<14)
+                                @if($i>3 and $i<8)
                                     <a href="{{route ('home.content',['content'=>$v['id']])}}">
                                         <dl>
                                             <dt><img src="{{$v['list_pic']}}" width="50"></dt>
@@ -186,7 +186,7 @@
                             <?php $i = 0;?>
                             @foreach($twoFloor['data'] as $v)
                                 <?php $i++;?>
-                                @if($i>8 and $i<14)
+                                @if($i>3 and $i<8)
                                     <a href="{{route ('home.content',['content'=>$v['id']])}}">
                                         <dl>
                                             <dt><img src="{{$v['list_pic']}}" width="50"></dt>
