@@ -18,6 +18,7 @@
                                 <input type="radio" name="adress" id="adress1" class="radio-select" value=""/>
                                 <span class="e-name">
                                   {{$address['name']}}
+
                                 </span>，
                                 <span class="city">{{$address['province']}}/{{$address['city']}}/{{$address['district']}} </span>
                                 <span class="city-particular">{{$address['detail']}}</span>，
@@ -130,7 +131,6 @@
                         </li>
                     </ul>
                 </div>
-
                 <!--确认地址-->
                 <div class="mailTo">
                     @if($defaultAddresses)

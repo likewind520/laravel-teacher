@@ -7,8 +7,8 @@ $(function(){
         //将当前选中的地址修改寄送至地址
         $('.mailTo').find('.m-city').text($(this).find('.city').html());
         $('.mailTo').find('.m-particular').text($(this).find('.city-particular').text());
-        $('.mailTo').find('.m-name').text('寄送至:'+$(this).find('.e-name').text());
-        $('.mailTo').find('.m-number').text('(收件人)'+$(this).find('.codeNumber').text());
+        $('.mailTo').find('.m-name').text($(this).find('.e-name').text());
+        $('.mailTo').find('.m-number').text($(this).find('.codeNumber').text());
 
     });
 	
