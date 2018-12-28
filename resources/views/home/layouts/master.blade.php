@@ -80,6 +80,7 @@
                         <span class="cart-size">({{\App\Models\Cart::where('user_id',auth()->id())->count()}})</span></a>
                     @endauth
                     @auth()
+                        @if(\App\Models\Cart::where('user_id',auth()->id())->count() !=0)
                         <div class="cart-tips" style="overflow: hidden;height: auto">
                             <ul style="overflow: hidden;padding: 10px;">
                                 @foreach($_carts as $cart)
@@ -97,6 +98,11 @@
                                 @endforeach
                             </ul>
                         </div>
+                            @else
+                            <div class="cart-tips">
+                                <span style="color: #0b67cd; font-size: 16px">亲,啥都木有,怎么剁手啊?</span>
+                            </div>
+                            @endif
                     @else
                     <div class="cart-tips">
                         请
