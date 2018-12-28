@@ -24,9 +24,9 @@
                                                     <a  href="{{route('home.content',['content'=>$v['good_id']])}}">{{$v['title']}}</a>
                                                 </p>
                                                 <p style="float: left">
-                                                    <span class="layui-badge layui-bg-orange">{{$v['spec']}}</span>
-                                                    <span class="layui-badge layui-bg-blue">{{$v['num']}}/¥{{$v['price']}}</span>
-                                                    <span class="layui-badge layui-bg-green">¥ {{$v['price']*$v['num']}}</span>
+                                                    <p class="layui-badge layui-bg-orange">{{$v['spec']}}</p>
+                                                    <span class="layui-badge layui-bg-blue" style="color: red">{{$v['num']}}/¥{{$v['price']}}</span>
+                                                    <span class="layui-badge layui-bg-green" style="color: red">¥ {{$v['price']*$v['num']}}</span>
                                                 </p>
                                             </div>
                                         @endforeach

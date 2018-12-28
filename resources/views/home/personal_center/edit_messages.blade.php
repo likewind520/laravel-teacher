@@ -36,7 +36,7 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">用户邮箱</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="email" value="{{auth()->user()->email}}" disabled="" class="layui-input ">
+                                    <input type="text" name="email" value="{{auth()->user()->email}}"  class="layui-input ">
                                 </div>
                             </div>
                             <div class="layui-form-item">
