@@ -45,7 +45,7 @@
                                 <li><a href="{{route('admin.config.edit',['type'=>'upload'])}}">上传配置</a></li>
                             @endif
                             @if(auth('admin')->user()->hasPermissionTo('Admin-config-email'))
-                                <li><a href="{{route('admin.config.edit',['type'=>'mail'])}}">邮件配置</a></li>
+                                <li><a href="{{route('admin.config.edit',['type'=>'email'])}}">邮件配置</a></li>
                             @endif
                             @if(auth('admin')->user()->hasPermissionTo('Admin-config-search'))
                                 <li><a href="{{route('admin.config.edit',['type'=>'search'])}}">搜索配置</a></li>

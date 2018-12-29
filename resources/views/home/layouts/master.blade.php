@@ -81,28 +81,28 @@
                     @endauth
                     @auth()
                         @if(\App\Models\Cart::where('user_id',auth()->id())->count() !=0)
-                        <div class="cart-tips" style="overflow: hidden;height: auto">
-                            <ul style="overflow: hidden;padding: 10px;">
-                                @foreach($_carts as $cart)
-                                    <li>
-                                        <div style="background: white;overflow: hidden">
-                                            <div class="gc1" style="overflow: hidden">
-                                                <p style="float: left">
-                                                <img style="width: 80px" src="{{$cart['pic']}}"/>
-                                                </p>
-                                                <p style="float: left ;width: 200px;word-break: break-all; text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;overflow: hidden;-webkit-line-clamp: 1;">{{$cart['title']}}</p>
-                                                <p style="float: left ; color: red; width: 80px;word-break: break-all; text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;overflow: hidden;-webkit-line-clamp: 1;">¥ {{$cart['price']}}元</p>
+                            <div class="cart-tips" style="overflow: hidden;height: auto">
+                                <ul style="overflow: hidden;padding: 10px;">
+                                    @foreach($_carts as $cart)
+                                        <li>
+                                            <div style="background: white;overflow: hidden">
+                                                <div class="gc1" style="overflow: hidden">
+                                                    <p style="float: left">
+                                                    <img style="width: 80px" src="{{$cart['pic']}}"/>
+                                                    </p>
+                                                    <p style="float: left ;width: 200px;word-break: break-all; text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;overflow: hidden;-webkit-line-clamp: 1;">{{$cart['title']}}</p>
+                                                    <p style="float: left ; color: red; width: 80px;word-break: break-all; text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;overflow: hidden;-webkit-line-clamp: 1;">¥ {{$cart['price']}}元</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                            @else
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @else
                             <div class="cart-tips">
                                 <span style="color: #0b67cd; font-size: 16px">亲,啥都木有,怎么剁手啊?</span>
                             </div>
-                            @endif
+                        @endif
                     @else
                     <div class="cart-tips">
                         请
